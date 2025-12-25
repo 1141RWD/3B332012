@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analog Soul | Vintage Camera & Vinyl</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container header-container">
+            <div class="logo">
+                <a href="#">Analog Soul.</a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#home">首頁</a></li>
+                    <li><a href="#shop">商品</a></li>
+                    <li><a href="#about">關於我們</a></li>
+                    <li><a href="#contact">聯絡我們</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="#" class="cart-icon">購物車 (0)</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container hero-content" style="text-align: center;">
+            <h1 class="hero-title">Recapture the <br> Moment.</h1>
+            <p class="hero-subtitle">Premium vintage cameras and vinyl records for the analog soul.</p>
+            <a href="#shop" class="btn btn-primary">探索商品</a>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section id="shop" class="section shop-section">
+        <div class="container-fluid" style="padding: 0; overflow: hidden;"> <!-- Changed to fluid and removed padding for full width feel if desired, or keep container. Let's stick to user request style. -->
+            <div class="section-header container reveal">
+                <h2 class="section-title">商品介紹</h2>
+                <p class="section-desc">Hand-picked treasures from the golden age.</p>
+            </div>
+            
+            <div class="carousel-container">
+                <button class="scroll-arrow prev">&#10094;</button>
+                <div class="product-track">
+                    <!-- Product 1 -->
+                    <article class="product-card">
+                        <div class="product-image">
+                            <div class="placeholder-img">
+                                <img src="image/The Dark Side Of The Moon.webp">
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">The Dark Side Of The Moon</h3>
+                            <p class="product-category">Pink Floyd</p>
+                            <span class="product-price">$35.99</span>
+                        </div>
+                    </article>
+
+                    <!-- Product 2 -->
+                    <article class="product-card">
+                        <div class="product-image">
+                            <div class="placeholder-img">
+                                <img src="image/legend.webp">
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">LEGEND</h3>
+                            <p class="product-category">Bob Marley</p>
+                            <span class="product-price">$34.99</span>
+                        </div>
+                    </article>
+
+                    <!-- Product 3 -->
+                    <article class="product-card">
+                        <div class="product-image">
+                            <div class="placeholder-img">
+                                <img src="image/riot.jpg">
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Riot!</h3>
+                            <p class="product-category">Paramore</p>
+                            <span class="product-price">$24.99</span>
+                        </div>
+                    </article>
+
+                    <!-- Product 4 -->
+                    <article class="product-card">
+                        <div class="product-image">
+                            <div class="placeholder-img">
+                                <img src="image/Ctrl.webp">
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">CTRL</h3>
+                            <p class="product-category">SZA</p>
+                            <span class="product-price">$29.99</span>
+                        </div>
+                    </article>
+
+                     <!-- Adding more items to demonstrate scrolling capabilities since duplicates are removed -->
+                    <!-- Product 5 -->
+                    <article class="product-card">
+                        <div class="product-image">
+                            <div class="placeholder-img" style="background: #444;">
+                                <img src="image/1984.webp" alt="">
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">1984</h3>
+                            <p class="product-category">Van Halen</p>
+                            <span class="product-price">$27.99</span>
+                        </div>
+                    </article>
+
+                     <!-- Product 6 -->
+                     <article class="product-card">
+                        <div class="product-image">
+                            <div class="placeholder-img" style="background: #333;">
+                                <img src="image/nervermind.webp" alt="">
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">nervermind</h3>
+                            <p class="product-category">Nirvana</p>
+                            <span class="product-price">$32.99</span>
+                        </div>
+                    </article>
+                    <article class="product-card">
+                        <div class="product-image">
+                            <div class="placeholder-img" style="background: #333;">
+                                <img src="image/Facelift.webp" alt="">
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Facelift</h3>
+                            <p class="product-category">Alice in Chains</p>
+                            <span class="product-price">$33.99</span>
+                        </div>
+                    </article>
+
+                    <!-- DUPLICATE SET FOR SEAMLESS LOOPING -->
+                    <!-- Product 1 -->
+                     <article class="product-card">
+                        <div class="product-image">
+                            <div class="placeholder-img">
+                                <img src="image/The Dark Side Of The Moon.webp">
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">The Dark Side Of The Moon</h3>
+                            <p class="product-category">Pink Floyd</p>
+                            <span class="product-price">$35.99</span>
+                        </div>
+                    </article>
+
+                    <!-- Product 2 -->
+                    <article class="product-card">
+                        <div class="product-image">
+                            <div class="placeholder-img">
+                                <img src="image/legend.webp">
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">LEGEND</h3>
+                            <p class="product-category">Bob Marley</p>
+                            <span class="product-price">$34.99</span>
+                        </div>
+                    </article>
+
+                    <!-- Product 3 -->
+                    <article class="product-card">
+                        <div class="product-image">
+                            <div class="placeholder-img">
+                                <img src="image/riot.jpg">
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Riot! </h3>
+                            <p class="product-category">Paramore</p>
+                            <span class="product-price">$24.99</span>
+                        </div>
+                    </article>
+
+                    <!-- Product 4 -->
+                    <article class="product-card">
+                        <div class="product-image">
+                            <div class="placeholder-img">
+                                <img src="image/Ctrl.webp">
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">CTRL</h3>
+                            <p class="product-category">SZA</p>
+                            <span class="product-price">$29.99</span>
+                        </div>
+                    </article>
+
+                    <!-- Product 5 -->
+                    <article class="product-card">
+                        <div class="product-image">
+                            <div class="placeholder-img" style="background: #444;">
+                                <img src="image/1984.webp" alt="">
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">1984</h3>
+                            <p class="product-category">Van Halen</p>
+                            <span class="product-price">$27.99</span>
+                        </div>
+                    </article>
+
+                     <!-- Product 6 -->
+                     <article class="product-card">
+                        <div class="product-image">
+                            <div class="placeholder-img" style="background: #333;">
+                                <img src="image/nervermind.webp" alt="">
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">nervermind</h3>
+                            <p class="product-category">Nirvana</p>
+                            <span class="product-price">$32.99</span>
+                        </div>
+                    </article>
+                                        <article class="product-card">
+                        <div class="product-image">
+                            <div class="placeholder-img" style="background: #333;">
+                                <img src="image/Facelift.webp" alt="">
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Facelift</h3>
+                            <p class="product-category">Alice in Chains</p>
+                            <span class="product-price">$33.99</span>
+                        </div>
+                    </article>
+
+                    <!-- DUPLICATE SET 3 FOR SEAMLESS LOOPING (End Buffer) -->
+                    <!-- Product 1 -->
+                     <article class="product-card">
+                        <div class="product-image">
+                            <div class="placeholder-img">
+                                <img src="image/The Dark Side Of The Moon.webp">
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">The Dark Side Of The Moon</h3>
+                            <p class="product-category">Pink Floyd</p>
+                            <span class="product-price">$35.99</span>
+                        </div>
+                    </article>
+
+                    <!-- Product 2 -->
+                    <article class="product-card">
+                        <div class="product-image">
+                            <div class="placeholder-img">
+                                <img src="image/legend.webp">
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">LEGEND</h3>
+                            <p class="product-category">Bob Marley</p>
+                            <span class="product-price">$34.99</span>
+                        </div>
+                    </article>
+
+                    <!-- Product 3 -->
+                    <article class="product-card">
+                        <div class="product-image">
+                            <div class="placeholder-img">
+                                <img src="image/riot.jpg">
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Riot! </h3>
+                            <p class="product-category">Paramore</p>
+                            <span class="product-price">$24.99</span>
+                        </div>
+                    </article>
+
+                    <!-- Product 4 -->
+                    <article class="product-card">
+                        <div class="product-image">
+                            <div class="placeholder-img">
+                                <img src="image/Ctrl.webp">
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">CTRL </h3>
+                            <p class="product-category">SZA</p>
+                            <span class="product-price">$29.99</span>
+                        </div>
+                    </article>
+
+                    <!-- Product 5 -->
+                    <article class="product-card">
+                        <div class="product-image">
+                            <div class="placeholder-img" style="background: #444;">
+                                <img src="image/1984.webp" alt="">
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">1984</h3>
+                            <p class="product-category">Van Halen</p>
+                            <span class="product-price">$27.99</span>
+                        </div>
+                    </article>
+
+                     <!-- Product 6 -->
+                     <article class="product-card">
+                        <div class="product-image">
+                            <div class="placeholder-img" style="background: #333;">
+                                <img src="image/nervermind.webp" alt="">
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">nervermind</h3>
+                            <p class="product-category">Nirvana</p>
+                            <span class="product-price">$32.99</span>
+                        </div>
+                    </article>
+                                        <article class="product-card">
+                        <div class="product-image">
+                            <div class="placeholder-img" style="background: #333;">
+                                <img src="image/Facelift.webp" alt="">
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Facelift</h3>
+                            <p class="product-category">Alice in Chains</p>
+                            <span class="product-price">$33.99</span>
+                        </div>
+                    </article>
+                </div>
+                <button class="scroll-arrow next">&#10095;</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about-section reveal">
+        <div class="container about-container">
+            <div class="about-image">
+                <img src="image/riot.jpg" alt="Analog Life" class="about-slide active">
+                <img src="image/legend.webp" alt="Vinyl Culture" class="about-slide">
+                <img src="image/Facelift.webp" alt="Vintage Audio" class="about-slide">
+            </div>
+            <div class="about-content">
+                <h2>Slow Down. Listen. Look.</h2>
+                <div class="divider"></div>
+                <p>在這個充滿即時數位噪音的世界裡，我們為您帶來底片的靜謐觸感和黑膠唱片的溫暖沙沙聲。 「Analog Soul」是那些既欣賞過程又重視結果的人們的避風港。</p>
+                <a href="#shop" class="btn btn-secondary">Explore Collection</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <div class="footer-col">
+                <h3>Analog Soul.</h3>
+                <p>Est. 2025</p>
+            </div>
+            <div class="footer-col">
+                <h4>連結</h4>
+                <ul>
+                    <li><a href="#">運送</a></li>
+                    <li><a href="#">退貨</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>社群媒體</h4>
+                <div class="social-links">
+                    <ul>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Facebook</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container copyright">
+            <p>&copy; 2025 Analog Soul. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Product Detail Modal -->
+    <div id="product-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img id="modal-img" src="" alt="Product Image">
+                </div>
+                <div class="modal-info">
+                    <h2 id="modal-title">Product Name</h2>
+                    <p id="modal-category" class="product-category">Category</p>
+                    <p id="modal-price" class="product-price">$0.00</p>
+                    <p id="modal-desc" class="modal-desc">This is a detailed description of the product. Feel its analog soul.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
