@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Quicksand:wght@400;500;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -24,14 +24,32 @@
             <nav class="main-nav">
                 <ul>
                     <li><a href="#home" class="active">首頁</a></li>
+                    <li><a href="#shop">特價</a></li>
                     <li class="nav-item-dropdown">
-                        <a href="#shop">商品 <span class="dropdown-arrow">▾</span></a>
+                        <a href="#">商品<span class="dropdown-arrow">▾</span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">歌手 (Artists)</a></li>
-                            <li><a href="#" class="highlight">促銷商品 (Sale)</a></li>
+                            <li class="has-submenu">
+                                <a href="#">黑膠唱片 (Vinyl) <span class="submenu-arrow">›</span></a>
+                                <ul class="submenu">
+                                    <li><a href="#">爵士 (Jazz)</a></li>
+                                    <li><a href="#">鄉村 (Country)</a></li>
+                                    <li><a href="#">搖滾 (Rock)</a></li>
+                                    <li><a href="#">嘻哈 (Hip Hop)</a></li>
+                                    <li><a href="#">古典 (Classical)</a></li>
+                                    <li><a href="#">藍調 (Blues)</a></li>
+                                </ul>
+                                
+                            </li>
+                            <li class="has-submenu">
+                                <a href="#">歌手 (Singers) <span class="submenu-arrow">›</span></a>
+                                <ul class="submenu">
+                                    <li><a href="#">歐美 (Western)</a></li>
+                                    <li><a href="#">亞洲 (Asian)</a></li>
+                                    
+                                </ul>
+                            </li>
                         </ul>
                     </li>
-                    <li><a href="#about">品牌故事</a></li>
                 </ul>
             </nav>
             <div class="header-actions">
@@ -45,34 +63,14 @@
         <div class="container hero-content">
             <h1 class="hero-title">Recapture the <span>Moment.</span></h1>
             <p class="hero-subtitle">Premium vintage cameras and vinyl records for the analog soul.</p>
-            <a href="#shop" class="btn btn-primary">探索系列</a>
+            <a href="#shop" class="btn btn-primary">探索商品</a>
         </div>
     </section>
-
-    <!-- About Section -->
-    <section id="about" class="section about-section">
-        <div class="container about-container reveal">
-            <div class="about-image">
-                <!-- Using one static cool image for now or JS slideshow -->
-                <img src="image/riot.jpg" alt="Analog Life" class="about-slide active">
-                <img src="image/legend.webp" alt="Vinyl Culture" class="about-slide">
-                <img src="image/Facelift.webp" alt="Vintage Audio" class="about-slide">
-            </div>
-            <div class="about-content">
-                <h2>Slow Down.<br>Listen. Look.</h2>
-                <div class="divider"></div>
-                <p>In a world of instant digital noise, we bring you the quiet tactility of film and the warm crackle of
-                    vinyl. "Analog Soul" is a sanctuary for those who appreciate the process as much as the result.</p>
-                <a href="#shop" class="btn btn-secondary">Our Story</a>
-            </div>
-        </div>
-    </section>
-
     <!-- Shop Section -->
     <section id="shop" class="section shop-section">
         <div class="container">
             <div class="section-header reveal">
-                <h2 class="section-title">促銷商品</h2>
+                <h2 class="section-title">特價商品</h2>
                 <p class="section-desc">Up to 30% OFF!</p>
             </div>
 
@@ -382,9 +380,13 @@
                             <span class="product-price original-price">$33.99</span>
                             <span class="product-price sale-price">$23.99</span>
                         </div>
+            
                     </article>
                 </div>
                 <button class="scroll-arrow next">&#10095;</button>
+            </div>
+            <div class="view-more-container" style="text-align: center; margin-top: 60px;">
+                <a href="#" class="btn btn-secondary">瀏覽更多商品</a>
             </div>
         </div>
     </section>
