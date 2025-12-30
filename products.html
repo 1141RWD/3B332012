@@ -28,12 +28,12 @@
                     <li class="nav-item-dropdown">
                         <a href="#">商品<span class="dropdown-arrow">▾</span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">爵士 (Jazz)</a></li>
-                            <li><a href="#">鄉村 (Country)</a></li>
-                            <li><a href="#">搖滾 (Rock)</a></li>
-                            <li><a href="#">嘻哈 (Hip Hop)</a></li>
-                            <li><a href="#">古典 (Classical)</a></li>
-                            <li><a href="#">藍調 (Blues)</a></li>
+                            <li><a href="products.html?category=Jazz">爵士 (Jazz)</a></li>
+                            <li><a href="products.html?category=Country">鄉村 (Country)</a></li>
+                            <li><a href="products.html?category=Rock">搖滾 (Rock)</a></li>
+                            <li><a href="products.html?category=Hip Hop">嘻哈 (Hip Hop)</a></li>
+                            <li><a href="products.html?category=Classical">古典 (Classical)</a></li>
+                            <li><a href="products.html?category=Blues">藍調 (Blues)</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -60,105 +60,66 @@
                 <p class="section-desc">Curated collection of vintage treasures.</p>
             </div>
 
-            <div class="product-grid-page">
-                <!-- Using same product-card structure but in a grid -->
-                <article class="product-card">
-                    <div class="product-image">
-                        <div class="placeholder-img">
-                            <img src="image/The Dark Side Of The Moon.webp" loading="lazy" alt="Pink Floyd">
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-title">The Dark Side Of The Moon</h3>
-                        <p class="product-category">Pink Floyd</p>
-                        <span class="product-price original-price">$35.99</span>
-                        <span class="product-price sale-price">$25.99</span>
-                    </div>
-                </article>
+            <!-- Back Button (Hidden by default) -->
+            <button id="back-to-categories" class="back-btn">
+                <i class="fas fa-arrow-left"></i> Back to Categories
+            </button>
 
-                <article class="product-card">
-                    <div class="product-image">
-                        <div class="placeholder-img">
-                            <img src="image/legend.webp" loading="lazy" alt="Bob Marley">
-                        </div>
+            <!-- Category Grid -->
+            <div class="category-grid reveal">
+                <!-- Jazz -->
+                <div class="category-card" data-category="Jazz">
+                    <img src="https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=1000&auto=format&fit=crop" alt="Jazz" loading="lazy">
+                    <div class="category-overlay">
+                        <h3>Jazz</h3>
+                        <p>Improvisational Soul</p>
                     </div>
-                    <div class="product-info">
-                        <h3 class="product-title">The Legend</h3>
-                        <p class="product-category">Bob Marley</p>
-                        <span class="product-price original-price">$34.99</span>
-                        <span class="product-price sale-price">$24.99</span>
+                </div>
+                <!-- Country -->
+                <div class="category-card" data-category="Country">
+                    <img src="https://images.unsplash.com/photo-1482442120256-9c03866de390?q=80&w=1000&auto=format&fit=crop" alt="Country" loading="lazy">
+                    <div class="category-overlay">
+                        <h3>Country</h3>
+                        <p>Stories of the Heart</p>
                     </div>
-                </article>
+                </div>
+                <!-- Rock -->
+                <div class="category-card" data-category="Rock">
+                    <img src="https://images.unsplash.com/photo-1498038432885-c6f3f1b912ee?q=80&w=1000&auto=format&fit=crop" alt="Rock" loading="lazy">
+                    <div class="category-overlay">
+                        <h3>Rock</h3>
+                        <p>Raw Energy</p>
+                    </div>
+                </div>
+                <!-- Hip Hop -->
+                <div class="category-card" data-category="Hip Hop">
+                    <img src="https://images.unsplash.com/photo-1621616872591-62d2222d6d02?q=80&w=1000&auto=format&fit=crop" alt="Hip Hop" loading="lazy">
+                    <div class="category-overlay">
+                        <h3>Hip Hop</h3>
+                        <p>Rhythm & Poetry</p>
+                    </div>
+                </div>
+                <!-- Classical -->
+                <div class="category-card" data-category="Classical">
+                    <img src="https://images.unsplash.com/photo-1507838153414-b4b713384ebd?q=80&w=1000&auto=format&fit=crop" alt="Classical" loading="lazy">
+                    <div class="category-overlay">
+                        <h3>Classical</h3>
+                        <p>Timeless Excellence</p>
+                    </div>
+                </div>
+                <!-- Blues -->
+                <div class="category-card" data-category="Blues">
+                    <img src="https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?q=80&w=1000&auto=format&fit=crop" alt="Blues" loading="lazy">
+                    <div class="category-overlay">
+                        <h3>Blues</h3>
+                        <p>Deep Roots</p>
+                    </div>
+                </div>
+            </div>
 
-                <article class="product-card">
-                    <div class="product-image">
-                        <div class="placeholder-img">
-                            <img src="image/riot.jpg" loading="lazy" alt="Paramore">
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-title">Riot!</h3>
-                        <p class="product-category">Paramore</p>
-                        <span class="product-price original-price">$24.99</span>
-                        <span class="product-price sale-price">$14.99</span>
-                    </div>
-                </article>
-
-                <article class="product-card">
-                    <div class="product-image">
-                        <div class="placeholder-img">
-                            <img src="image/Ctrl.webp" loading="lazy" alt="SZA">
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-title">CTRL</h3>
-                        <p class="product-category">SZA</p>
-                        <span class="product-price original-price">$29.99</span>
-                        <span class="product-price sale-price">$19.99</span>
-                    </div>
-                </article>
-
-                <article class="product-card">
-                    <div class="product-image">
-                        <div class="placeholder-img">
-                            <img src="image/1984.webp" loading="lazy" alt="Van Halen">
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-title">1984</h3>
-                        <p class="product-category">Van Halen</p>
-                        <span class="product-price original-price">$27.99</span>
-                        <span class="product-price sale-price">$17.99</span>
-                    </div>
-                </article>
-
-                <article class="product-card">
-                    <div class="product-image">
-                        <div class="placeholder-img">
-                            <img src="image/nervermind.webp" loading="lazy" alt="Nirvana">
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-title">Nevermind</h3>
-                        <p class="product-category">Nirvana</p>
-                        <span class="product-price original-price">$32.99</span>
-                        <span class="product-price sale-price">$22.99</span>
-                    </div>
-                </article>
-
-                <article class="product-card">
-                    <div class="product-image">
-                        <div class="placeholder-img">
-                            <img src="image/Facelift.webp" loading="lazy" alt="Alice in Chains">
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-title">Facelift</h3>
-                        <p class="product-category">Alice in Chains</p>
-                        <span class="product-price original-price">$33.99</span>
-                        <span class="product-price sale-price">$23.99</span>
-                    </div>
-                </article>
+            <!-- Dynamic Product Container -->
+            <div id="category-products" class="category-products-container">
+                <!-- Products will be injected here via JS -->
             </div>
         </div>
     </main>
