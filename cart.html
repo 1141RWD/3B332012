@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login / Sign Up | Analog Soul</title>
+    <title>Shopping Cart | Analog Soul</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -13,92 +13,128 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
     <style>
-        .auth-container {
-            max-width: 400px;
+        .cart-container {
+            max-width: 900px;
             margin: 0 auto;
-            background: #1a1a1a;
+            background: rgba(26, 26, 26, 0.95);
             padding: 40px;
             border-radius: 8px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
             margin-top: 40px;
         }
 
-        .auth-tabs {
-            display: flex;
+        .cart-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
             margin-bottom: 30px;
-            border-bottom: 2px solid #333;
-        }
-
-        .auth-tab {
-            flex: 1;
-            padding: 10px;
-            text-align: center;
-            cursor: pointer;
-            color: #666;
-            font-weight: bold;
-            transition: all 0.3s;
-        }
-
-        .auth-tab.active {
+            border-bottom: 1px solid #333;
+            padding-bottom: 15px;
             color: var(--accent);
-            border-bottom: 2px solid var(--accent);
-            margin-bottom: -2px;
         }
 
-        .auth-form {
-            display: none;
-        }
-
-        .auth-form.active {
-            display: block;
-        }
-
-        .form-group {
+        .cart-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #222;
+            padding: 20px;
             margin-bottom: 20px;
+            border-radius: 4px;
+            border: 1px solid #333;
+            transition: transform 0.2s;
         }
 
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            color: #ddd;
-            font-size: 0.9rem;
+        .cart-item:hover {
+            transform: translateY(-2px);
+            border-color: #444;
         }
 
-        .form-group input {
-            width: 100%;
-            padding: 12px;
-            background: #333;
-            border: 1px solid #444;
+        .cart-item-img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-right: 20px;
+            background: #111;
+        }
+
+        .cart-item-details {
+            flex: 1;
+        }
+
+        .cart-item-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
             color: #fff;
+            margin-bottom: 5px;
+        }
+
+        .cart-item-subtitle {
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        .cart-item-price {
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 700;
+            color: var(--accent);
+            font-size: 1.1rem;
+            margin-right: 20px;
+        }
+
+        .remove-btn {
+            background: none;
+            border: 1px solid #444;
+            color: #888;
+            padding: 5px 10px;
+            cursor: pointer;
+            transition: all 0.3s;
             border-radius: 4px;
         }
 
-        .form-group input:focus {
-            border-color: var(--accent);
-            outline: none;
+        .remove-btn:hover {
+            border-color: #ff4d4d;
+            color: #ff4d4d;
         }
 
-        .submit-btn {
-            width: 100%;
-            padding: 12px;
-            border: none;
+        .cart-summary {
+            margin-top: 40px;
+            text-align: right;
+            border-top: 1px solid #333;
+            padding-top: 20px;
+        }
+
+        .total-price {
+            font-size: 1.5rem;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .total-price span {
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .checkout-btn {
             background: var(--accent);
             color: #000;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 30px;
             font-weight: bold;
+            font-size: 1rem;
             cursor: pointer;
             transition: opacity 0.3s;
         }
 
-        .submit-btn:hover {
-            opacity: 0.8;
+        .checkout-btn:hover {
+            opacity: 0.9;
         }
 
-        .error-message {
-            color: #ff4d4d;
-            font-size: 0.85rem;
-            margin-top: 5px;
-            min-height: 1.2em;
-            /* Prevent jump when text appears */
+        .empty-cart-msg {
+            text-align: center;
+            color: #888;
+            padding: 40px;
         }
     </style>
 </head>
@@ -145,7 +181,6 @@
                         <li>EUR</li>
                     </ul>
                 </div>
-                <!-- Auth status will be injected here -->
                 <a href="#" class="cart-icon"><span data-i18n="nav_cart">CART</span> (0)</a>
                 <div class="auth-action" id="header-auth">
                     <a href="login.html" class="cart-icon" data-i18n="auth_login">Login</a>
@@ -157,43 +192,20 @@
     <!-- Main Content -->
     <main style="padding-top: 120px; padding-bottom: 80px;">
         <div class="container">
-            <div class="auth-container">
-                <div class="auth-tabs">
-                    <div class="auth-tab active" onclick="switchTab('login')" data-i18n="auth_login">Login</div>
-                    <div class="auth-tab" onclick="switchTab('register')" data-i18n="auth_register">Sign Up</div>
+            <div class="cart-container">
+                <h1 class="cart-title" data-i18n="nav_cart">Shopping Cart</h1>
+
+                <div id="cart-items-container">
+                    <!-- Items injected here -->
+                    <div class="empty-cart-msg">Your cart is empty.</div>
                 </div>
 
-                <!-- Login Form -->
-                <form id="login-form" class="auth-form active" onsubmit="handleLogin(event)">
-                    <div class="form-group">
-                        <label data-i18n="auth_email">Email</label>
-                        <input type="email" id="login-email" required placeholder="email@example.com">
-                    </div>
-                    <div class="form-group">
-                        <label data-i18n="auth_password">Password</label>
-                        <input type="password" id="login-password" required>
-                    </div>
-                    <div id="login-error" class="error-message"></div>
-                    <button type="submit" class="submit-btn" data-i18n="auth_login_btn">Login</button>
-                </form>
-
-                <!-- Register Form -->
-                <form id="register-form" class="auth-form" onsubmit="handleRegister(event)">
-                    <div class="form-group">
-                        <label data-i18n="auth_name">Full Name</label>
-                        <input type="text" id="reg-name" required placeholder="John Doe">
-                    </div>
-                    <div class="form-group">
-                        <label data-i18n="auth_email">Email</label>
-                        <input type="email" id="reg-email" required placeholder="email@example.com">
-                    </div>
-                    <div class="form-group">
-                        <label data-i18n="auth_password">Password</label>
-                        <input type="password" id="reg-password" required>
-                    </div>
-                    <div id="reg-error" class="error-message"></div>
-                    <button type="submit" class="submit-btn" data-i18n="auth_register_btn">Sign Up</button>
-                </form>
+                <div class="cart-summary">
+                    <div class="total-price">Total: <span id="cart-total">$0.00</span></div>
+                    <button class="checkout-btn" onclick="handleCheckout()">Checkout</button>
+                    <button class="checkout-btn" style="background:transparent; border:1px solid #666; color:#fff;"
+                        onclick="window.location.href='index.html'">Continue Shopping</button>
+                </div>
             </div>
         </div>
     </main>
@@ -206,18 +218,18 @@
                 <p style="color: #666; width: 80%;">Est. 2025. Preserving the analog spirit in a digital world.</p>
             </div>
             <div class="footer-col">
-                <h4 data-i18n="footer_explore">Explore</h4>
+                <h4>Explore</h4>
                 <ul>
                     <li><a href="faq.html">FAQ</a></li>
                     <li><a href="terms.html">Terms</a></li>
                 </ul>
             </div>
             <div class="footer-col">
-                <h4 data-i18n="footer_connect">Connect</h4>
+                <h4>Connect</h4>
                 <ul>
-                    <li><a href="https://www.ncut.edu.tw/" target="_blank">Instagram</a></li>
-                    <li><a href="https://www.ncut.edu.tw/" target="_blank">Twitter</a></li>
-                    <li><a href="https://www.ncut.edu.tw/" target="_blank">Facebook</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Facebook</a></li>
                 </ul>
             </div>
         </div>
@@ -228,22 +240,13 @@
 
     <script src="script.js"></script>
     <script>
-        // Simple tab switcher inline for now, or move to script.js if prefered
-        function switchTab(tab) {
-            const forms = document.querySelectorAll('.auth-form');
-            const tabs = document.querySelectorAll('.auth-tab');
+        // Additional Cart-Specific Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            renderCart();
+        });
 
-            forms.forEach(f => f.classList.remove('active'));
-            tabs.forEach(t => t.classList.remove('active'));
-
-            if (tab === 'login') {
-                document.getElementById('login-form').classList.add('active');
-                tabs[0].classList.add('active');
-            } else {
-                document.getElementById('register-form').classList.add('active');
-                tabs[1].classList.add('active');
-            }
-        }
+        // Make functions global for inline onclick handlers without needing to modify script.js too much for now
+        // though ideally all logic moves to script.js
     </script>
 </body>
 

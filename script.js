@@ -129,7 +129,8 @@ document.addEventListener("DOMContentLoaded", () => {
       auth_welcome: "Hi, ",
       auth_logout: "Logout",
       auth_failed: "Invalid email or password",
-      auth_exists: "Account already exists"
+      auth_exists: "Account already exists",
+      cart_login_prompt: "Please login or register to view your cart."
     },
     zh: {
       nav_home: "首頁",
@@ -195,7 +196,10 @@ document.addEventListener("DOMContentLoaded", () => {
       auth_welcome: "嗨, ",
       auth_logout: "登出",
       auth_failed: "電子郵件或密碼錯誤",
-      auth_exists: "帳戶已存在"
+      auth_exists: "帳戶已存在",
+      cart_login_prompt: "請先登入或註冊帳號以檢視購物車。",
+      cart_empty: "您的購物車是空的。",
+      cart_checkout_success: "感謝您的購買！"
     }
   };
 
@@ -734,6 +738,24 @@ document.addEventListener("DOMContentLoaded", () => {
     modalPrice.setAttribute('data-base-price', basePrice);
     modalPrice.innerText = formatPrice(basePrice, currentCurrency);
 
+    // Update Add to Cart Button with specific product info
+    const addBtn = modal.querySelector('.btn-primary');
+    if (addBtn) {
+      // Clone to remove old listeners
+      const newBtn = addBtn.cloneNode(true);
+      addBtn.parentNode.replaceChild(newBtn, addBtn);
+
+      newBtn.addEventListener('click', () => {
+        CartManager.addItem({
+          title,
+          category,
+          price: basePrice,
+          img
+        });
+        hideModal();
+      });
+    }
+
     modal.style.display = "block";
     document.body.style.overflow = "hidden";
   };
@@ -827,12 +849,140 @@ document.addEventListener("DOMContentLoaded", () => {
   const categoryParam = urlParams.get('category');
 
   if (categoryParam && typeof categoryCards !== 'undefined') {
+    // Just finding the category card provided it exists, logic for targetCard seems missing in original snippet 
+    // but preserving context.
+    const targetCard = document.querySelector(`.category-card[data-category="${categoryParam}"]`);
     if (targetCard) {
       setTimeout(() => {
         targetCard.click();
       }, 300);
     }
   }
+
+  // 7.5 Shopping Cart Auth Check
+  const cartLink = document.querySelector('a.cart-icon[href="#"]');
+  if (cartLink) {
+    cartLink.addEventListener('click', (e) => {
+      e.preventDefault(); // Always prevent default # behavior
+
+      const user = localStorage.getItem('currentUser');
+      if (!user) {
+        window.location.href = 'login.html';
+      } else {
+        window.location.href = 'cart.html';
+      }
+    });
+  }
+
+  // 8. Cart Manager
+  const CartManager = {
+    getKey: () => {
+      const userStr = localStorage.getItem('currentUser');
+      if (!userStr) return null;
+      const user = JSON.parse(userStr);
+      return 'cart_' + user.email;
+    },
+    addItem: (product) => {
+      const key = CartManager.getKey();
+      if (!key) {
+        window.location.href = 'login.html';
+        return;
+      }
+      let cart = JSON.parse(localStorage.getItem(key) || '[]');
+      cart.push(product);
+      localStorage.setItem(key, JSON.stringify(cart));
+      updateCartCount();
+      alert("Added to Cart!"); // Simple feedback
+    },
+    getItems: () => {
+      const key = CartManager.getKey();
+      if (!key) return [];
+      return JSON.parse(localStorage.getItem(key) || '[]');
+    },
+    removeItem: (index) => {
+      const key = CartManager.getKey();
+      if (!key) return;
+      let cart = JSON.parse(localStorage.getItem(key) || '[]');
+      cart.splice(index, 1);
+      localStorage.setItem(key, JSON.stringify(cart));
+      updateCartCount();
+      if (window.renderCart) window.renderCart();
+    },
+    clear: () => {
+      const key = CartManager.getKey();
+      if (key) localStorage.removeItem(key);
+      updateCartCount();
+    }
+  };
+
+  // Helper to update header count
+  const updateCartCount = () => {
+    const items = CartManager.getItems();
+    const countEl = document.querySelector('.cart-icon span');
+    const countText = document.querySelector('.cart-icon');
+
+    // Update the text node with (N)
+    // Note: Current HTML is <a ...><span>CART</span> (0)</a>
+    // Need care not to wipe the SPAN
+    if (countText) {
+      // Reconstruct for safety
+      const t = translations[currentLang] || translations['en'];
+      countText.innerHTML = `<span data-i18n="nav_cart">${t.nav_cart}</span> (${items.length})`;
+    }
+  };
+
+  // Expose for UI
+  window.CartManager = CartManager;
+  window.handleCheckout = () => {
+    CartManager.clear();
+    const t = translations[currentLang] || translations['en'];
+    alert(t.cart_checkout_success || "Thank you for your purchase!");
+    if (window.renderCart) window.renderCart();
+  };
+
+  // Render function for cart.html
+  window.renderCart = () => {
+    const container = document.getElementById('cart-items-container');
+    const totalEl = document.getElementById('cart-total');
+    if (!container) return;
+
+    const items = CartManager.getItems();
+    const t = translations[currentLang] || translations['en'];
+
+    if (items.length === 0) {
+      container.innerHTML = `<div class="empty-cart-msg">${t.cart_empty || "Your cart is empty."}</div>`;
+      if (totalEl) totalEl.innerText = formatPrice(0, currentCurrency);
+      return;
+    }
+
+    container.innerHTML = '';
+    let total = 0;
+
+    items.forEach((item, index) => {
+      total += item.price;
+      const div = document.createElement('div');
+      div.className = 'cart-item';
+      div.innerHTML = `
+            <div style="display:flex; align-items:center;">
+                <img src="${item.img}" class="cart-item-img">
+                <div class="cart-item-details">
+                    <div class="cart-item-title">${item.title}</div>
+                    <div class="cart-item-subtitle">${item.category}</div>
+                </div>
+            </div>
+            <div style="display:flex; align-items:center;">
+                <div class="cart-item-price" data-base-price="${item.price}">${formatPrice(item.price, currentCurrency)}</div>
+                <button class="remove-btn" onclick="CartManager.removeItem(${index})"><i class="fas fa-trash"></i></button>
+            </div>
+          `;
+      container.appendChild(div);
+    });
+
+    if (totalEl) totalEl.innerText = formatPrice(total, currentCurrency);
+  };
+
+  // Initial header count update
+  updateCartCount();
 
   // 4. Auth Logic
   window.handleRegister = (e) => {
@@ -842,8 +992,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const password = document.getElementById('reg-password').value;
 
     const existing = localStorage.getItem('user_' + email);
+    const errorEl = document.getElementById('reg-error');
+    if (errorEl) errorEl.innerText = "";
+
     if (existing) {
-      alert("Account already exists");
+      const t = translations[currentLang] || translations['en'];
+      if (errorEl) {
+        errorEl.innerText = t.auth_exists;
+      } else {
+        alert("Account already exists");
+      }
       return;
     }
 
@@ -857,6 +1015,8 @@ document.addEventListener("DOMContentLoaded", () => {
     e.preventDefault();
     const email = document.getElementById('login-email').value;
     const password = document.getElementById('login-password').value;
+    const errorEl = document.getElementById('login-error');
+    if (errorEl) errorEl.innerText = ""; // Clear previous error
 
     const stored = localStorage.getItem('user_' + email);
     if (stored) {
@@ -867,7 +1027,15 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
     }
-    alert("Invalid email or password");
+
+    // Show inline error
+    if (errorEl) {
+      const t = translations[currentLang] || translations['en'];
+      errorEl.innerText = t.auth_failed;
+    } else {
+      // Fallback if element not found (should not happen)
+      alert("Invalid email or password");
+    }
   };
 
   window.handleLogout = () => {
