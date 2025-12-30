@@ -10,6 +10,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Quicksand:wght@400;500;700&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -23,22 +24,29 @@
             </div>
             <nav class="main-nav">
                 <ul>
-                    <li><a href="#home" class="active">首頁</a></li>
-                    <li><a href="#shop">特價</a></li>
+                    <li><a href="#home" class="active" data-i18n="nav_home">首頁</a></li>
+                    <li><a href="#shop" data-i18n="nav_sale">特價</a></li>
                     <li class="nav-item-dropdown">
-                        <a href="#">商品<span class="dropdown-arrow">▾</span></a>
+                        <a href="#"><span data-i18n="nav_products">商品</span><span class="dropdown-arrow">▾</span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="products.html?category=Jazz">爵士 (Jazz)</a></li>
-                            <li><a href="products.html?category=Country">鄉村 (Country)</a></li>
-                            <li><a href="products.html?category=Rock">搖滾 (Rock)</a></li>
-                            <li><a href="products.html?category=Hip Hop">嘻哈 (Hip Hop)</a></li>
-                            <li><a href="products.html?category=Classical">古典 (Classical)</a></li>
-                            <li><a href="products.html?category=Blues">藍調 (Blues)</a></li>
+                            <li><a href="products.html?category=Jazz" data-i18n="cat_jazz">爵士 (Jazz)</a></li>
+                            <li><a href="products.html?category=Country" data-i18n="cat_country">鄉村 (Country)</a></li>
+                            <li><a href="products.html?category=Rock" data-i18n="cat_rock">搖滾 (Rock)</a></li>
+                            <li><a href="products.html?category=Hip Hop" data-i18n="cat_hiphop">嘻哈 (Hip Hop)</a></li>
+                            <li><a href="products.html?category=Classical" data-i18n="cat_classical">古典 (Classical)</a></li>
+                            <li><a href="products.html?category=Blues" data-i18n="cat_blues">藍調 (Blues)</a></li>
                         </ul>
                     </li>
                 </ul>
             </nav>
             <div class="header-actions">
+                <div class="language-selector">
+                    <i class="fas fa-globe"></i>
+                    <ul class="language-dropdown">
+                        <li data-lang="en">English</li>
+                        <li data-lang="zh">繁體中文</li>
+                    </ul>
+                </div>
                 <div class="currency-selector">
                     <span class="current-currency">USD</span>
                     <ul class="currency-dropdown">
@@ -47,7 +55,7 @@
                         <li>EUR</li>
                     </ul>
                 </div>
-                <a href="#" class="cart-icon">CART (0)</a>
+                <a href="#" class="cart-icon"><span data-i18n="nav_cart">CART</span> (0)</a>
             </div>
         </div>
     </header>
@@ -57,14 +65,14 @@
         <div class="container hero-content">
             <h1 class="hero-title">Recapture the <span>Moment.</span></h1>
             <p class="hero-subtitle">Premium vintage cameras and vinyl records for the analog soul.</p>
-            <a href="#shop" class="btn btn-primary">探索商品</a>
+            <a href="#shop" class="btn btn-primary" data-i18n="btn_explore">探索商品</a>
         </div>
     </section>
     <!-- Shop Section -->
     <section id="shop" class="section shop-section">
         <div class="container">
             <div class="section-header reveal">
-                <h2 class="section-title">優惠商品</h2>
+                <h2 class="section-title" data-i18n="section_sale">優惠商品</h2>
                 <p class="section-desc">Up to 30% OFF!</p>
             </div>
 
@@ -269,12 +277,112 @@
                         </div>
             
                     </article>
+
+                    <!-- Set 3 (Duplicate) -->
+                    <article class="product-card">
+                        <div class="product-image">
+                            <div class="placeholder-img">
+                                <img src="image/The Dark Side Of The Moon.webp" loading="lazy">
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">The Dark Side Of The Moon</h3>
+                            <p class="product-category">Pink Floyd</p>
+                            <span class="product-price original-price" data-base-price="35.99">$35.99</span>
+                            <span class="product-price sale-price" data-base-price="25.99">$25.99</span>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <div class="product-image">
+                            <div class="placeholder-img">
+                                <img src="image/legend.webp" loading="lazy">
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">The Legend</h3>
+                            <p class="product-category">Bob Marley</p>
+                            <span class="product-price original-price" data-base-price="34.99">$34.99</span>
+                            <span class="product-price sale-price" data-base-price="24.99">$24.99</span>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <div class="product-image">
+                            <div class="placeholder-img">
+                                <img src="image/riot.jpg" loading="lazy">
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Riot!</h3>
+                            <p class="product-category">Paramore</p>
+                            <span class="product-price original-price" data-base-price="24.99">$24.99</span>
+                            <span class="product-price sale-price" data-base-price="14.99">$14.99</span>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <div class="product-image">
+                            <div class="placeholder-img">
+                                <img src="image/Ctrl.webp" loading="lazy">
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">CTRL</h3>
+                            <p class="product-category">SZA</p>
+                            <span class="product-price original-price" data-base-price="29.99">$29.99</span>
+                            <span class="product-price sale-price" data-base-price="19.99">$19.99</span>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <div class="product-image">
+                            <div class="placeholder-img">
+                                <img src="image/1984.webp" loading="lazy">
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">1984</h3>
+                            <p class="product-category">Van Halen</p>
+                            <span class="product-price original-price" data-base-price="27.99">$27.99</span>
+                            <span class="product-price sale-price" data-base-price="17.99">$17.99</span>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <div class="product-image">
+                            <div class="placeholder-img">
+                                <img src="image/nervermind.webp" loading="lazy">
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Nevermind</h3>
+                            <p class="product-category">Nirvana</p>
+                            <span class="product-price original-price" data-base-price="32.99">$32.99</span>
+                            <span class="product-price sale-price" data-base-price="22.99">$22.99</span>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <div class="product-image">
+                            <div class="placeholder-img">
+                                <img src="image/Facelift.webp" loading="lazy">
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Facelift</h3>
+                            <p class="product-category">Alice in Chains</p>
+                            <span class="product-price original-price" data-base-price="33.99">$33.99</span>
+                            <span class="product-price sale-price" data-base-price="23.99">$23.99</span>
+                        </div>
+            
+                    </article>
                 </div>
                 <button class="scroll-arrow next">&#10095;</button>
             </div>
 
-            <div class="view-more-container" style="text-align: center; margin-top: 60px;">
-                <a href="products.html" class="btn btn-secondary">瀏覽更多商品</a>
+            <div class="view-more-container reveal" style="text-align: center; margin-top: 60px;">
+                <a href="products.html" class="btn btn-secondary" data-i18n="btn_browse_more">瀏覽更多商品</a>
             </div>
         </div>
     </section>
@@ -287,7 +395,7 @@
                 <p style="color: #666; width: 80%;">Est. 2025. Preserving the analog spirit in a digital world.</p>
             </div>
             <div class="footer-col">
-                <h4>Explore</h4>
+                <h4 data-i18n="footer_explore">Explore</h4>
                 <ul>
                     <li><a href="#">Shipping & Returns</a></li>
                     <li><a href="#">FAQ</a></li>
@@ -295,7 +403,7 @@
                 </ul>
             </div>
             <div class="footer-col">
-                <h4>Connect</h4>
+                <h4 data-i18n="footer_connect">Connect</h4>
                 <ul>
                     <li><a href="#">Instagram</a></li>
                     <li><a href="#">Twitter</a></li>
@@ -324,7 +432,7 @@
                     quality and authenticity.
                 </p>
                 <p id="modal-price" style="font-size: 2rem; color: #fff;">$0.00</p>
-                <button class="btn btn-primary" style="margin-top: 30px; width: 100%;">Add to Cart</button>
+                <button class="btn btn-primary" style="margin-top: 30px; width: 100%;" data-i18n="modal_add_cart">Add to Cart</button>
             </div>
         </div>
     </div>

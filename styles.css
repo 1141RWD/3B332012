@@ -137,10 +137,71 @@ img {
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.btn-secondary:hover {
-  border-color: #fff;
-  background: #fff;
-  color: #000;
+/* Header Actions */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.language-selector,
+.currency-selector {
+    position: relative;
+    color: var(--text-primary);
+    cursor: pointer;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+}
+
+.language-selector i {
+    font-size: 1.1rem;
+    transition: color 0.3s;
+}
+
+.language-selector:hover i,
+.currency-selector:hover {
+    color: var(--accent);
+}
+
+.language-dropdown,
+.currency-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: #1a1a1a;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 10px 0;
+    min-width: 100px; /* Slightly wider for language names */
+    width: max-content;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+    z-index: 1001; /* Ensure above header */
+}
+
+.language-selector:hover .language-dropdown,
+.currency-selector:hover .currency-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.language-dropdown li,
+.currency-dropdown li {
+    padding: 8px 20px;
+    cursor: pointer;
+    transition: background 0.2s;
+    color: #ccc;
+    font-size: 0.85rem;
+}
+
+.language-dropdown li:hover,
+.currency-dropdown li:hover {
+    background: rgba(212, 175, 55, 0.1);
+    color: var(--accent);
 }
 
 /* Header & Nav */
@@ -1222,4 +1283,16 @@ img {
 .currency-dropdown li:hover {
   color: #fff;
   background: rgba(255, 255, 255, 0.05);
+}
+
+/* Reveal Animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
 }

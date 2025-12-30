@@ -10,6 +10,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Quicksand:wght@400;500;700&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -23,22 +24,29 @@
             </div>
             <nav class="main-nav">
                 <ul>
-                    <li><a href="index.html">首頁</a></li>
-                    <li><a href="index.html#shop">特價</a></li>
+                    <li><a href="index.html" data-i18n="nav_home">首頁</a></li>
+                    <li><a href="index.html#shop" data-i18n="nav_sale">特價</a></li>
                     <li class="nav-item-dropdown">
-                        <a href="#">商品<span class="dropdown-arrow">▾</span></a>
+                        <a href="#"><span data-i18n="nav_products">商品</span><span class="dropdown-arrow">▾</span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="products.html?category=Jazz">爵士 (Jazz)</a></li>
-                            <li><a href="products.html?category=Country">鄉村 (Country)</a></li>
-                            <li><a href="products.html?category=Rock">搖滾 (Rock)</a></li>
-                            <li><a href="products.html?category=Hip Hop">嘻哈 (Hip Hop)</a></li>
-                            <li><a href="products.html?category=Classical">古典 (Classical)</a></li>
-                            <li><a href="products.html?category=Blues">藍調 (Blues)</a></li>
+                            <li><a href="products.html?category=Jazz" data-i18n="cat_jazz">爵士 (Jazz)</a></li>
+                            <li><a href="products.html?category=Country" data-i18n="cat_country">鄉村 (Country)</a></li>
+                            <li><a href="products.html?category=Rock" data-i18n="cat_rock">搖滾 (Rock)</a></li>
+                            <li><a href="products.html?category=Hip Hop" data-i18n="cat_hiphop">嘻哈 (Hip Hop)</a></li>
+                            <li><a href="products.html?category=Classical" data-i18n="cat_classical">古典 (Classical)</a></li>
+                            <li><a href="products.html?category=Blues" data-i18n="cat_blues">藍調 (Blues)</a></li>
                         </ul>
                     </li>
                 </ul>
             </nav>
             <div class="header-actions">
+                <div class="language-selector">
+                    <i class="fas fa-globe"></i>
+                    <ul class="language-dropdown">
+                        <li data-lang="en">English</li>
+                        <li data-lang="zh">繁體中文</li>
+                    </ul>
+                </div>
                 <div class="currency-selector">
                     <span class="current-currency">USD</span>
                     <ul class="currency-dropdown">
@@ -47,7 +55,7 @@
                         <li>EUR</li>
                     </ul>
                 </div>
-                <a href="#" class="cart-icon">CART (0)</a>
+                <a href="#" class="cart-icon"><span data-i18n="nav_cart">CART</span> (0)</a>
             </div>
         </div>
     </header>
@@ -56,12 +64,12 @@
     <main style="padding-top: 120px; padding-bottom: 80px;">
         <div class="container">
             <div class="section-header" style="margin-top: 40px;">
-                <h2 class="section-title">All Products</h2>
-                <p class="section-desc">Curated collection of vintage treasures.</p>
+                <h2 class="section-title" data-i18n="section_all">All Products</h2>
+                <p class="section-desc" data-i18n="section_desc">Curated collection of vintage treasures.</p>
             </div>
 
             <!-- Back Button (Hidden by default) -->
-            <button id="back-to-categories" class="back-btn">
+            <button id="back-to-categories" class="back-btn" data-i18n="back_categories">
                 <i class="fas fa-arrow-left"></i> Back to Categories
             </button> <!-- product modal -->
             <div id="product-modal" class="modal">
@@ -79,7 +87,7 @@
                             quality and authenticity.
                         </p>
                         <p id="modal-price" style="font-size: 2rem; color: #fff;">$0.00</p>
-                        <button class="btn btn-primary" style="margin-top: 30px; width: 100%;">Add to Cart</button>
+                        <button class="btn btn-primary" style="margin-top: 30px; width: 100%;" data-i18n="modal_add_cart">Add to Cart</button>
                     </div>
                 </div>
             </div>
@@ -90,7 +98,7 @@
                 <div class="category-card" data-category="Jazz">
                     <img src="https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=1000&auto=format&fit=crop" alt="Jazz" loading="lazy">
                     <div class="category-overlay">
-                        <h3>Jazz</h3>
+                        <h3 data-i18n="card_jazz">Jazz</h3>
                         <p>Improvisational Soul</p>
                     </div>
                 </div>
@@ -98,7 +106,7 @@
                 <div class="category-card" data-category="Country">
                     <img src="https://images.unsplash.com/photo-1482442120256-9c03866de390?q=80&w=1000&auto=format&fit=crop" alt="Country" loading="lazy">
                     <div class="category-overlay">
-                        <h3>Country</h3>
+                        <h3 data-i18n="card_country">Country</h3>
                         <p>Stories of the Heart</p>
                     </div>
                 </div>
@@ -106,7 +114,7 @@
                 <div class="category-card" data-category="Rock">
                     <img src="https://images.unsplash.com/photo-1498038432885-c6f3f1b912ee?q=80&w=1000&auto=format&fit=crop" alt="Rock" loading="lazy">
                     <div class="category-overlay">
-                        <h3>Rock</h3>
+                        <h3 data-i18n="card_rock">Rock</h3>
                         <p>Raw Energy</p>
                     </div>
                 </div>
@@ -114,15 +122,15 @@
                 <div class="category-card" data-category="Hip Hop">
                     <img src="image/hiphop.jpg" alt="Hip Hop" loading="lazy">
                     <div class="category-overlay">
-                        <h3>Hip Hop</h3>
+                        <h3 data-i18n="card_hiphop">Hip Hop</h3>
                         <p>Rhythm & Poetry</p>
                     </div>
                 </div>
                 <!-- Classical -->
                 <div class="category-card" data-category="Classical">
-                    <img src="image/classical.jpg" alt="Classical" loading="lazy">
+                    <img src="image/Classical.jpg" alt="Classical" loading="lazy">
                     <div class="category-overlay">
-                        <h3>Classical</h3>
+                        <h3 data-i18n="card_classical">Classical</h3>
                         <p>Timeless Excellence</p>
                     </div>
                 </div>
@@ -130,7 +138,7 @@
                 <div class="category-card" data-category="Blues">
                     <img src="https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?q=80&w=1000&auto=format&fit=crop" alt="Blues" loading="lazy">
                     <div class="category-overlay">
-                        <h3>Blues</h3>
+                        <h3 data-i18n="card_blues">Blues</h3>
                         <p>Deep Roots</p>
                     </div>
                 </div>

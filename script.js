@@ -63,6 +63,93 @@ document.addEventListener("DOMContentLoaded", () => {
   updatePriceDisplay();
 
 
+  // Initial Update
+  updatePriceDisplay();
+
+  // 1.5 Language Logic
+  const translations = {
+      en: {
+          nav_home: "Home",
+          nav_sale: "Sale",
+          nav_products: "Products",
+          nav_cart: "CART",
+          cat_jazz: "Jazz",
+          cat_country: "Country",
+          cat_rock: "Rock",
+          cat_hiphop: "Hip Hop",
+          cat_classical: "Classical",
+          cat_blues: "Blues",
+          btn_explore: "Explore",
+          section_sale: "Sale Items",
+          section_all: "All Products",
+          section_desc: "Curated collection of vintage treasures.",
+          btn_browse_more: "Browse More Products",
+          back_categories: "Back to Categories",
+          card_jazz: "Jazz",
+          card_country: "Country",
+          card_rock: "Rock",
+          card_hiphop: "Hip Hop",
+          card_classical: "Classical",
+          card_blues: "Blues"
+      },
+      zh: {
+          nav_home: "首頁",
+          nav_sale: "特價",
+          nav_products: "商品",
+          nav_cart: "購物車",
+          cat_jazz: "爵士 (Jazz)",
+          cat_country: "鄉村 (Country)",
+          cat_rock: "搖滾 (Rock)",
+          cat_hiphop: "嘻哈 (Hip Hop)",
+          cat_classical: "古典 (Classical)",
+          cat_blues: "藍調 (Blues)",
+          btn_explore: "探索商品",
+          section_sale: "特價商品",
+          section_all: "所有商品",
+          section_desc: "精選的復古珍寶系列。",
+          btn_browse_more: "瀏覽更多商品",
+          footer_explore: "探索",
+          footer_connect: "連結",
+          modal_add_cart: "加入購物車",
+          back_categories: "返回分類",
+          card_jazz: "爵士",
+          card_country: "鄉村",
+          card_rock: "搖滾",
+          card_hiphop: "嘻哈",
+          card_classical: "古典",
+          card_blues: "藍調"
+      }
+  };
+
+  let currentLang = localStorage.getItem('lang') || 'zh';
+
+  const updateLanguage = (lang) => {
+      currentLang = lang;
+      localStorage.setItem('lang', lang);
+      
+      const t = translations[lang];
+      if (!t) return;
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+          const key = el.getAttribute('data-i18n');
+          if (t[key]) {
+              el.innerText = t[key];
+          }
+      });
+  };
+
+  // Language Dropdown Event Listener
+  document.querySelectorAll('.language-dropdown li').forEach(item => {
+      item.addEventListener('click', () => {
+          const lang = item.getAttribute('data-lang');
+          updateLanguage(lang);
+      });
+  });
+
+  // Initial Language Update
+  updateLanguage(currentLang);
+
+
   // 1. Scroll Animations (Intersection Observer)
   const observerOptions = {
     threshold: 0.15,
