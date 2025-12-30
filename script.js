@@ -272,95 +272,166 @@ document.addEventListener("DOMContentLoaded", () => {
   const productsData = {
     Jazz: [
       {
-        title: "Portrait In Jazz",
-        artist: "Bill Evans Trio",
-        price: "$19.99",
-        img: "https://images.unsplash.com/photo-1415201364774-f6f0bb35f28f?q=80&w=1000&auto=format&fit=crop",
-      },
-      {
-        title: "Blue Train",
-        artist: "John Coltrane",
-        price: "$24.99",
-        img: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=1000&auto=format&fit=crop",
-      },
-      {
-        title: "Kind of Blue",
-        artist: "Miles Davis",
+        title: "Aja",
+        artist: "Steely Dan",
         price: "$29.99",
-        img: "https://images.unsplash.com/photo-1621360841013-c768371e93cf?q=80&w=1000&auto=format&fit=crop",
+        img: "https://vinyl.com/cdn/shop/files/9036860129585_85quality_4239980-3045661.webp?v=1734325939&width=5760",
       },
       {
-        title: "Time Out",
-        artist: "The Dave Brubeck Quartet",
+        title: "Cowboy Bebop (Original Series Soundtrack) [2LP]",
+        artist: "Seatbelts",
+        price: "$31.99",
+        img: "https://vinyl.com/cdn/shop/files/8258512159025_85quality_Seatbelts_-_Cowboy_Bebop_Original_Series_Soundtrack.webp?v=1734326229&width=5760",
+      },
+      {
+        title: "Kind Of Blue [Blue Marble]",
+        artist: "Miles Davis",
+        price: "$41.99",
+        img: "https://cdn.shopify.com/s/files/1/0704/2026/7313/files/8449562181937_85quality_Miles_Davis_Kind_Of_Blue_Blue_Marbled_Vinyl.webp?v=1734325891",
+      },
+      {
+        title: "Now Playing (Compilation)",
+        artist: "Roberta Flack",
+        price: "$19.99",
+        img: "https://cdn.shopify.com/s/files/1/0704/2026/7313/files/9782071984433_85quality_Roberta_Flack_-_Now_Playing_Compilation.webp?v=1734326213",
+      },
+      {
+        title: "Come Fly with Me",
+        artist: "Frank Sinatra",
+        price: "$27.99",
+        img: "https://cdn.shopify.com/s/files/1/0704/2026/7313/files/8448786989361_85quality_2583017.webp?v=1734326052",
+      },
+      {
+        title: "Getz/Gilberto",
+        artist: "Stan Getz & João Gilberto",
+        price: "$29.99",
+        img: "https://cdn.shopify.com/s/files/1/0704/2026/7313/files/8335054143793_85quality_2800545.webp?v=1734326024",
+      },
+      {
+        title: "Whipped Cream & Other Delights (50th Anniversary Edition)",
+        artist: "Herb Alpert",
+        price: "$19.99",
+        img: "https://cdn.shopify.com/s/files/1/0704/2026/7313/files/8335050899761_85quality_Herb_Alpert_-_Whipped_Cream_Other_Delights_50th_Anniversary_Edition.webp?v=1734327284",
+      },
+      {
+        title: "Astral Weeks (180-gram)",
+        artist: "Van Morrison",
         price: "$22.99",
-        img: "https://images.unsplash.com/photo-1503856241197-0bb0a7df064f?q=80&w=1000&auto=format&fit=crop",
+        img: "https://cdn.shopify.com/s/files/1/0704/2026/7313/files/8335046869297_85quality_Van_Morrison_-_Astral_Weeks.webp?v=1734326361",
       },
     ],
     Country: [
       {
+        title: "Moondance [180-gram]",
+        artist: "Van Morrison",
+        price: "$24.99",
+        img: "https://cdn.shopify.com/s/files/1/0704/2026/7313/files/8258499445041_85quality_Van_Morrison_-_Moondance.webp?v=1734325749",
+      },
+      {
+        title: "Speak Now (Taylor's Version) [3LP Orchid Marble]",
+        artist: "Taylor Swift",
+        price: "$47.99",
+        img: "https://cdn.shopify.com/s/files/1/0704/2026/7313/files/8845992919345_85quality_taylor-swift-speak-now-taylors-version-orchid-marbled-vinyl-sealed-uk-3-lp-vinyl-album-record.webp?v=1734325768",
+      },
+      {
+        title: "Red (Taylor's Version) [4LP]",
+        artist: "Taylor Swift",
+        price: "$49.99",
+        img: "https://cdn.shopify.com/s/files/1/0704/2026/7313/files/8258509504817_85quality_4020845-2758936.webp?v=1734325738",
+      },
+      {
         title: "Golden Hour",
         artist: "Kacey Musgraves",
-        price: "$24.99",
-        img: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=1000&auto=format&fit=crop",
-      },
-      {
-        title: "Red Headed Stranger",
-        artist: "Willie Nelson",
-        price: "$19.99",
-        img: "https://images.unsplash.com/photo-1516280440614-6697288d5d38?q=80&w=1000&auto=format&fit=crop",
-      },
-      {
-        title: "Traveller",
-        artist: "Chris Stapleton",
         price: "$27.99",
-        img: "https://images.unsplash.com/photo-1493225255756-d9584f8606e9?q=80&w=1000&auto=format&fit=crop",
+        img: "https://cdn.shopify.com/s/files/1/0704/2026/7313/files/8334924054833_85quality_kacey_musgraves_vinyl_golden_hour_LP_1.webp?v=1734325887",
+      },
+      {
+        title: "Greatest!",
+        artist: "Johnny Cash",
+        price: "$19.99",
+        img: "https://cdn.shopify.com/s/files/1/0704/2026/7313/files/8448577110321_85quality_Johnny_Cash_-_Greatest.webp?v=1734326039",
+      },
+      {
+        title: "The Windstar Greatest Hits",
+        artist: "John Denver",
+        price: "$15.99",
+        img: "https://cdn.shopify.com/s/files/1/0704/2026/7313/files/8335048868145_85quality_3741332.webp?v=1734327311",
       },
     ],
     Rock: [
-      {
-        title: "The Dark Side Of The Moon",
-        artist: "Pink Floyd",
-        price: "$35.99",
-        img: "image/The Dark Side Of The Moon.webp",
-      },
-      {
-        title: "Nevermind",
-        artist: "Nirvana",
-        price: "$32.99",
-        img: "image/nervermind.webp",
-      },
-      {
-        title: "Riot!",
-        artist: "Paramore",
-        price: "$24.99",
-        img: "image/riot.jpg",
-      },
-      {
-        title: "1984",
-        artist: "Van Halen",
-        price: "$27.99",
-        img: "image/1984.webp",
-      },
-      {
-        title: "Facelift",
-        artist: "Alice in Chains",
-        price: "$33.99",
-        img: "image/Facelift.webp",
-      },
+        {
+            title: "Riot! (FBR's 25th Anniversary Edition) [Silver]",
+            artist: "Paramore",
+            price: "$21.99",
+            img: "https://vinyl.com/cdn/shop/files/8258505507121_85quality_paramore_riot_silver_vinyl.webp?v=1734325769&width=5760"
+        },
+        {
+            title: "Nevermind",
+            artist: "Nirvana",
+            price: "$29.99",
+            img: "https://vinyl.com/cdn/shop/files/8258513305905_85quality_Nirvana_Nevermind_Vinyl_LP.webp?v=1734325766&width=5760"
+        },
+        {
+            title: "The Dark Side Of The Moon (50th Anniversary Edition)",
+            artist: "Pink Floyd",
+            price: "$31.99",
+            img: "https://vinyl.com/cdn/shop/files/9089832321329_85quality_DARK-SIDE-50_1024x1024_9bcc2782-a4d8-46b4-961e-8f28edab9858.webp?v=1734325789&width=5760"
+        },
+        {
+            title: "AM [180-gram]",
+            artist: "Arctic Monkeys",
+            price: "$22.99",
+            img: "https://vinyl.com/cdn/shop/files/8258500198705_85quality_arctic-monkeys-am-lp_1024x1024_b88bbb6b-9eec-460b-80bb-a00687dfa348.webp?v=1734325742&width=5760"
+        },
+        {
+            title: "Jar Of Flies",
+            artist: "Alice In Chains",
+            price: "$21.99",
+            img: "https://vinyl.com/cdn/shop/files/9405456810289_85quality_4296473-3098885.webp?v=1734325758&width=5760"
+        },
+        {
+            title: "Moondance [180-gram]",
+            artist: "Van Morrison",
+            price: "$24.99",
+            img: "https://vinyl.com/cdn/shop/files/8258499445041_85quality_Van_Morrison_-_Moondance.webp?v=1734325749&width=5760"
+        },
+        {
+            title: "Around The Fur [180-gram]",
+            artist: "Deftones",
+            price: "$21.99",
+            img: "https://vinyl.com/cdn/shop/files/8258509144369_85quality_Deftones_vinyl_around_the_fur_LP.webp?v=1734325750&width=5760"
+        },
+        {
+            title: "Hotel California [180-gram]",
+            artist: "Eagles",
+            price: "$24.99",
+            img: "https://vinyl.com/cdn/shop/files/8258506817841_85quality_Eagles_-_Hotel_California.webp?v=1734325795&width=5760"
+        }
     ],
     "Hip Hop": [
-      { title: "CTRL", artist: "SZA", price: "$29.99", img: "image/Ctrl.webp" },
       {
-        title: "To Pimp a Butterfly",
-        artist: "Kendrick Lamar",
-        price: "$34.99",
-        img: "https://images.unsplash.com/photo-1619983081563-430f63602796?q=80&w=1000&auto=format&fit=crop",
+        title: "CTRL",
+        artist: "SZA",
+        price: "$24.99",
+        img: "https://cdn.shopify.com/s/files/1/0704/2026/7313/files/8258503573809_85quality_SZA_vinyl_ctrl_2LP.webp?v=1734325779",
       },
       {
-        title: "Illmatic",
-        artist: "Nas",
+        title: "good kid, m.A.A.d city",
+        artist: "Kendrick Lamar",
         price: "$29.99",
-        img: "https://images.unsplash.com/photo-1571330735066-03aaa9429d89?q=80&w=1000&auto=format&fit=crop",
+        img: "https://cdn.shopify.com/s/files/1/0704/2026/7313/files/8258502394161_85quality_Kendrick_Lamar_-_good_kid_m_A_A_d_city_2LP.webp?v=1734325785",
+      },
+      {
+        title: "IGOR",
+        artist: "Tyler, The Creator",
+        price: "$27.99",
+        img: "https://cdn.shopify.com/s/files/1/0704/2026/7313/files/8258501869873_85quality_Tyler_the_creator_vinyl_igor_LP.webp?v=1734325769",
+      },
+      {
+        title: "Swimming",
+        artist: "Mac Miller",
+        price: "$27.99",
+        img: "https://cdn.shopify.com/s/files/1/0704/2026/7313/files/8448090997041_85quality_Mac_Miller_-_Swimming_2LP.webp?v=1734325758",
       },
     ],
     Classical: [
@@ -379,16 +450,40 @@ document.addEventListener("DOMContentLoaded", () => {
     ],
     Blues: [
       {
-        title: "King of the Delta Blues",
-        artist: "Robert Johnson",
-        price: "$21.99",
-        img: "https://images.unsplash.com/photo-1453282716202-de94e528067c?q=80&w=1000&auto=format&fit=crop",
+        title: "Cowboy Bebop (Original Series Soundtrack) [2LP]",
+        artist: "Seatbelts",
+        price: "$31.99",
+        img: "https://vinyl.com/cdn/shop/files/8258512159025_85quality_Seatbelts_-_Cowboy_Bebop_Original_Series_Soundtrack.webp?v=1734326229&width=5760",
       },
       {
-        title: "At Last!",
-        artist: "Etta James",
-        price: "$23.99",
-        img: "https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?q=80&w=1000&auto=format&fit=crop",
+        title: "The Music Never Stopped: The Roots of the Grateful Dead",
+        artist: "Various Artists",
+        price: "$24.99",
+        img: "https://vinyl.com/cdn/shop/files/9405447405873_85quality_4284265-3084959.webp?v=1734326317&width=5760",
+      },
+      {
+        title: "Electric Ladyland [2LP]",
+        artist: "Jimi Hendrix",
+        price: "$29.99",
+        img: "https://vinyl.com/cdn/shop/files/8258511634737_85quality_Jimi_Hendrix_-_Electric_Ladyland_2LP.webp?v=1734326029&width=5760",
+      },
+      {
+        title: "Sound & Color [2LP Black, Pink & Magenta]",
+        artist: "Alabama Shakes",
+        price: "$33.99",
+        img: "https://vinyl.com/cdn/shop/files/8335081865521_85quality_Alabama_Shakes_-_Sound_Color_Black_Pink_Magenta_2LP.webp?v=1734326083&width=5760",
+      },
+      {
+        title: "Astral Weeks (180-gram)",
+        artist: "Van Morrison",
+        price: "$22.99",
+        img: "https://cdn.shopify.com/s/files/1/0704/2026/7313/files/8335046869297_85quality_Van_Morrison_-_Astral_Weeks.webp?v=1734326361",
+      },
+      {
+        title: "Bridge Of Sighs",
+        artist: "Robin Trower",
+        price: "$13.99",
+        img: "https://cdn.shopify.com/s/files/1/0704/2026/7313/files/8334903050545_85quality_3840251-2585813.webp?v=1734328057",
       },
     ],
   };
