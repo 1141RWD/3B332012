@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Analog Soul | Premium Vintage</title>
+    <link rel="icon" type="image/png" href="../image/favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -12,6 +13,21 @@
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../styles.css">
+    <style>
+        .modal-desc.truncated {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .read-more-btn {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 <body>
@@ -411,7 +427,8 @@
                 <h2 id="modal-title">Product Name</h2>
                 <p id="modal-category" class="product-category">Category</p>
                 <div style="width: 50px; height: 2px; background: var(--accent); margin: 20px 0;"></div>
-                <p id="modal-desc" style="color: #ccc; line-height: 1.8; margin-bottom: 30px;">
+                <p id="modal-desc" class="modal-desc truncated"
+                    style="color: #ccc; line-height: 1.8; margin-bottom: 20px;">
                     Experience the uncompressed, raw emotion of analog sound. This piece has been carefully verified for
                     quality and authenticity.
                 </p>

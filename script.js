@@ -148,7 +148,9 @@ document.addEventListener("DOMContentLoaded", () => {
       pay_paypal: "PayPal",
       pay_crypto: "Crypto (USDT, BTC, ETH)",
       pay_error: "Please select a payment method.",
-      free: "Free"
+      free: "Free",
+      btn_read_more: "Read more",
+      btn_show_less: "Show less"
     },
     zh: {
       nav_home: "首頁",
@@ -233,7 +235,9 @@ document.addEventListener("DOMContentLoaded", () => {
       pay_paypal: "PayPal",
       pay_crypto: "加密貨幣 (USDT, BTC, ETH)",
       pay_error: "請選擇付款方式。",
-      free: "免費"
+      free: "免費",
+      btn_read_more: "閱讀更多",
+      btn_show_less: "收起內容"
     }
   };
 
@@ -252,8 +256,19 @@ document.addEventListener("DOMContentLoaded", () => {
         el.innerText = t[key];
       }
     });
-    
 
+
+    // If modal is open, update description language
+    const modalDesc = document.getElementById("modal-desc");
+    const modal = document.getElementById("product-modal");
+    if (modalDesc && modal && window.getComputedStyle(modal).display === "block") {
+      const descEn = modalDesc.getAttribute('data-desc-en');
+      const descZh = modalDesc.getAttribute('data-desc-zh');
+      // Re-render description
+      if (typeof renderModalDescription === 'function') {
+        renderModalDescription(descEn, descZh);
+      }
+    }
   };
 
   // Language Dropdown Event Listener
@@ -494,50 +509,66 @@ document.addEventListener("DOMContentLoaded", () => {
         artist: "Paramore",
         price: "$29.99",
         originalPrice: "$39.99",
-        img: "https://vinyl.com/cdn/shop/files/8258505507121_85quality_paramore_riot_silver_vinyl.webp?v=1734325769&width=5760"
+        img: "https://vinyl.com/cdn/shop/files/8258505507121_85quality_paramore_riot_silver_vinyl.webp?v=1734325769&width=5760",
+        description: "Celebrate a milestone in pop-punk history with Paramore's \"Riot!,\" reissued in a stunning silver vinyl for Fueled By Ramen's 25th anniversary. This album, originally released in 2007, is a powerhouse of high-energy tracks, including the explosive hits \"Misery Business\" and \"That's What You Get.\" The production, led by David Bendeth, captures the vibrant and rebellious spirit of the band, propelling \"Riot!\" to critical acclaim and earning it a place as a genre-defining work. This special edition not only commemorates the album's impact but also celebrates the label's legacy in shaping modern punk music. The 25th Anniversary Edition of \"Riot!\" offers fans both nostalgia and a fresh take on beloved classics, now pressed on silver vinyl that adds a collectible twist. Paramore's breakthrough album features their signature blend of catchy melodies and heartfelt lyrics, now enhanced with premium sound quality. This release is an essential addition to any vinyl collector's library, ensuring that the spirited anthems of Paramore continue to inspire new generations of music lovers. Whether you're rediscovering the album or experiencing it for the first time, \"Riot!\" remains a vibrant testament to Paramore's enduring appeal and influence in the rock scene.",
+        description_zh: "慶祝 Paramore 流行龐克歷史上的里程碑，《Riot!》以令人驚豔的銀色黑膠重新發行，紀念 Fueled By Ramen 成立 25 週年。這張專輯最初於 2007 年發行，充滿了高能量的曲目，包括爆炸性的熱門歌曲《Misery Business》和《That's What You Get》。由 David Bendeth 製作，捕捉了樂團充滿活力和叛逆的精神，將《Riot!》推向好評，並奠定了其作為流派定義之作的地位。此特別版不僅紀念了專輯的影響力，也慶祝了該廠牌在塑造現代龐克音樂方面的傳承。《Riot!》25 週年紀念版為粉絲提供了懷舊與對心愛經典的全新詮釋，壓製於銀色黑膠上，增添了收藏價值。Paramore 的突破性專輯展現了他們標誌性的朗朗上口的旋律與真摯歌詞的融合，現在更以優質的音質呈現。此發行是任何黑膠收藏家庫存中的必備之選，確保 Paramore 精神飽滿的頌歌繼續激勵新一代的音樂愛好者。無論您是重新發現這張專輯還是初次體驗，《Riot!》仍然是 Paramore 在搖滾界持久魅力和影響力的生動證明。"
       },
       {
         title: "Nevermind",
         artist: "Nirvana",
         price: "$29.99",
         originalPrice: "$39.99",
-        img: "https://vinyl.com/cdn/shop/files/8258513305905_85quality_Nirvana_Nevermind_Vinyl_LP.webp?v=1734325766&width=5760"
+        img: "https://vinyl.com/cdn/shop/files/8258513305905_85quality_Nirvana_Nevermind_Vinyl_LP.webp?v=1734325766&width=5760",
+        description: "Step back into the pivotal era of grunge with Nirvana's groundbreaking album \"Nevermind,\" now available on vinyl. This 1991 release catapulted the Seattle trio into the spotlight, embedding their sound as the anthem of Generation X and thrusting alternative rock into the mainstream. Featuring the explosive tracks \"Smells Like Teen Spirit\" and the deeply introspective \"Something in the Way,\" \"Nevermind\" captures the raw emotion and unfiltered angst that defined a generation. The album's powerful dynamic, crafted by producer Butch Vig, showcases Kurt Cobain's raw lyrics, Dave Grohl's intense drumming, and Krist Novoselic's foundational bass lines, making it a must-have in any vinyl enthusiast’s collection. \"Nevermind\" is not just an album; it's a cultural milestone that reshaped the music landscape. From its iconic cover to its blend of melodic hooks and distorted guitars, it offers a visceral portrait of youthful disillusionment and desire for authenticity. Celebrated for its influence and artistry, this vinyl release preserves the gritty essence of Nirvana's vision, making it an essential piece for both long-time fans and new listeners wanting to experience the genesis of modern rock music.",
+        description_zh: "重返 Nirvana 開創性專輯《Nevermind》的關鍵油漬搖滾時代，現已推出黑膠版本。這張 1991 年的發行將這支西雅圖三人組推向聚光燈下，將他們的聲音深深烙印為 X 世代的頌歌，並將另類搖滾推向主流。收錄了爆炸性的曲目《Smells Like Teen Spirit》和深刻內省的《Something in the Way》，《Nevermind》捕捉了定義一個世代的原始情感和未經過濾的焦慮。專輯強大的動態由製作人 Butch Vig 打造，展現了 Kurt Cobain 原始的歌詞、Dave Grohl 強烈的鼓聲以及 Krist Novoselic 紮實的貝斯線條，使其成為任何黑膠愛好者收藏中的必備之作。《Nevermind》不僅僅是一張專輯；它是重塑音樂景觀的文化里程碑。從其標誌性的封面到旋律鉤子與失真吉他的融合，它提供了青春幻滅與對真實渴望的直觀寫照。因其影響力和藝術性而備受讚譽，這張黑膠發行保留了 Nirvana 願景的粗獷本質，使其成為渴望體驗現代搖滾音樂起源的資深粉絲與新聽眾的重要作品。"
       },
       {
         title: "The Dark Side Of The Moon (50th Anniversary Edition)",
         artist: "Pink Floyd",
         price: "$31.99",
-        img: "https://vinyl.com/cdn/shop/files/9089832321329_85quality_DARK-SIDE-50_1024x1024_9bcc2782-a4d8-46b4-961e-8f28edab9858.webp?v=1734325789&width=5760"
+        img: "https://vinyl.com/cdn/shop/files/9089832321329_85quality_DARK-SIDE-50_1024x1024_9bcc2782-a4d8-46b4-961e-8f28edab9858.webp?v=1734325789&width=5760",
+        description: "Celebrate 50 years of Pink Floyd's legendary The Dark Side of the Moon with this special anniversary edition, remastered by James Guthrie on 180g vinyl. Originally released in 1973, this groundbreaking album transcended music, becoming a cultural touchstone for generations of listeners. Tracks like \"Money\" and \"Time\" have become timeless anthems, delivering a sonic experience that blurs the lines between reality and psychedelic imagination. This 50th anniversary edition comes housed in a beautiful gatefold jacket, complete with collectible posters and stickers, enhancing the overall experience for both longtime fans and new listeners. The Dark Side of the Moon remains a cosmic journey through themes of human experience, societal reflection, and existential thought, cementing its place as one of the greatest albums ever created. This remastered edition ensures the album sounds better than ever, allowing you to fully immerse yourself in its profound depths.",
+        description_zh: "藉由這張由 James Guthrie 重新修復的 180 克黑膠唱片，慶祝 Pink Floyd 傳奇專輯《The Dark Side of the Moon》發行 50 週年。這張廣受讚譽的專輯最初於 1973 年發行，超越了音樂範疇，成為世世代代聽眾的文化試金石。《Money》和《Time》等曲目已成為永恆的頌歌，傳遞出一種模糊了現實與迷幻想像界限的聲音體驗。此 50 週年紀念版採用精美的摺頁封套包裝，並附有值得收藏的海報和貼紙，提升了資深粉絲和新聽眾的整體體驗。《The Dark Side of the Moon》仍然是一趟穿越人類經驗、社會反思和存在主義思考主題的宇宙之旅，鞏固了其作為有史以來最偉大專輯之一的地位。此重製版本確保專輯的音質比以往任何時候都更好，讓您完全沉浸在其深邃的意境中。"
       },
       {
         title: "AM [180-gram]",
         artist: "Arctic Monkeys",
         price: "$22.99",
-        img: "https://vinyl.com/cdn/shop/files/8258500198705_85quality_arctic-monkeys-am-lp_1024x1024_b88bbb6b-9eec-460b-80bb-a00687dfa348.webp?v=1734325742&width=5760"
+        img: "https://vinyl.com/cdn/shop/files/8258500198705_85quality_arctic-monkeys-am-lp_1024x1024_b88bbb6b-9eec-460b-80bb-a00687dfa348.webp?v=1734325742&width=5760",
+        description: "Experience the bold and innovative sound of Arctic Monkeys with their critically acclaimed album AM, now available on 180gm vinyl. Released in 2013, AM marks a significant evolution in the band's sound, blending indie rock with hip-hop rhythms and R&B influences to create a uniquely modern soundscape. Featuring standout tracks like \"Do I Wanna Know?\", \"R U Mine?\", and \"Why'd You Only Call Me When You're High?\", this album captures the band's signature wit, sonic experimentation, and Alex Turner's charismatic vocals. Produced by James Ford and co-produced by Ross Orton, AM has been lauded for its sleek production and clever lyrics, solidifying Arctic Monkeys' place in modern rock history. The 180gm vinyl edition of AM offers a rich, immersive listening experience, bringing out the intricate layers and dynamic range that define the album. Whether you're a longtime fan or new to their music, adding AM to your vinyl collection is essential for anyone who appreciates groundbreaking, genre-blending rock.",
+        description_zh: "體驗 Arctic Monkeys 廣受好評的專輯《AM》大膽且創新的聲音，現已推出 180 克黑膠版本。於 2013 年發行，《AM》標誌著樂團聲音的重大演變，將獨立搖滾與嘻哈節奏和 R&B 影響融合，創造出獨特的現代音景。專輯收錄了《Do I Wanna Know?》、《R U Mine?》和《Why'd You Only Call Me When You're High?》等傑出曲目，捕捉了樂團標誌性的機智、聲音實驗以及 Alex Turner 充滿魅力的嗓音。由 James Ford 製作，Ross Orton 聯合製作，《AM》因其流暢的製作和巧妙的歌詞而備受讚譽，鞏固了 Arctic Monkeys 在現代搖滾史上的地位。《AM》的 180 克黑膠版本提供了豐富、身歷其境的聆聽體驗，展現了定義這張專輯的複雜層次和動態範圍。無論您是資深粉絲還是初次接觸他們的音樂，對於任何欣賞開創性、融合流派搖滾的人來說，將《AM》加入您的黑膠收藏都是必不可少的。"
       },
       {
         title: "Jar Of Flies",
         artist: "Alice In Chains",
         price: "$21.99",
-        img: "https://vinyl.com/cdn/shop/files/9405456810289_85quality_4296473-3098885.webp?v=1734325758&width=5760"
+        img: "https://vinyl.com/cdn/shop/files/9405456810289_85quality_4296473-3098885.webp?v=1734325758&width=5760",
+        description: "Dark, moody, and hauntingly beautiful, Jar of Flies shows Alice in Chains at their most introspective. This 1994 EP blends acoustic melancholy with grunge intensity, delivering a sound that's as raw as it is refined. Featuring standout tracks like No Excuses, Nutshell, and I Stay Away, this EP marks a daring shift from the band’s heavier roots. It’s layered with emotional depth, harmonized vocals, and bluesy, acoustic arrangements that set it apart in the '90s rock scene. The band's vulnerability bleeds through every note, creating a deeply personal and immersive listening experience. Pressed on classic black vinyl, this edition captures the textured atmosphere and sonic richness that only analog can deliver. A must-have for fans of grunge, alternative rock, and emotionally driven music.",
+        description_zh: "黑暗、情緒化且淒美，《Jar of Flies》展現了 Alice in Chains 最內省的一面。這張 1994 年的 EP 將原聲的憂鬱與油漬搖滾的強烈感融合在一起，傳遞出一種既原始又精緻的聲音。收錄了《No Excuses》、《Nutshell》和《I Stay Away》等傑出曲目，這張 EP 標誌著樂團背離其更重型根源的大膽轉變。它層次分明，充滿情感深度、和聲演唱以及藍調風格的原聲編曲，使其在 90 年代搖滾場景中獨樹一幟。樂團的脆弱感滲透在每一個音符中，創造出極其個人化且身歷其境的聆聽體驗。此版本壓製於經典黑色黑膠上，捕捉了只有類比錄音才能傳遞的質感氛圍和聲音豐富度。這是油漬搖滾、另類搖滾和情感驅動音樂粉絲的必備之作。"
       },
       {
         title: "Moondance [180-gram]",
         artist: "Van Morrison",
         price: "$24.99",
-        img: "https://vinyl.com/cdn/shop/files/8258499445041_85quality_Van_Morrison_-_Moondance.webp?v=1734325749&width=5760"
+        img: "https://vinyl.com/cdn/shop/files/8258499445041_85quality_Van_Morrison_-_Moondance.webp?v=1734325749&width=5760",
+        description: "Experience the timeless magic of Van Morrison's \"Moondance,\" a masterpiece that highlights his extraordinary vocal and songwriting talents. Released in 1970, this album features a captivating mix of jazz, folk, and blues, showcasing Morrison's ability to blend genres seamlessly. With enduring classics like \"Moondance,\" \"Caravan,\" and \"Into the Mystic,\" this album remains a beloved favorite among music enthusiasts. This edition is meticulously crafted, recorded onto 180-gram vinyl at RTI and mastered from the original analog master tapes by Kevin Gray at Acoustech Mastering. The superior sound quality brings out the buoyant rhythms and poetic lyrics that continue to captivate listeners to this day. Adding \"Moondance\" to your vinyl collection ensures you'll always have a touch of Van Morrison's enchanting artistry at your fingertips.",
+        description_zh: "體驗 Van Morrison 《Moondance》永恆的魔力，這是一部彰顯他非凡歌聲與創作才華的傑作。這張專輯於 1970 年發行，融合了迷人的爵士、民謠和藍調，展現了 Morrison 無縫融合流派的能力。憑藉《Moondance》、《Caravan》和《Into the Mystic》等不朽經典，這張專輯仍然是音樂愛好者心目中的摯愛。此版本經過精心製作，由 Acoustech Mastering 的 Kevin Gray 從原始類比母帶重製，並於 RTI 壓製成 180 克黑膠。卓越的音質展現了至今仍讓聽眾著迷的輕快節奏與詩意歌詞。將《Moondance》加入您的黑膠收藏，確保您隨時都能觸及 Van Morrison 迷人的藝術造詣。"
       },
       {
         title: "Around The Fur [180-gram]",
         artist: "Deftones",
         price: "$21.99",
-        img: "https://vinyl.com/cdn/shop/files/8258509144369_85quality_Deftones_vinyl_around_the_fur_LP.webp?v=1734325750&width=5760"
+        img: "https://vinyl.com/cdn/shop/files/8258509144369_85quality_Deftones_vinyl_around_the_fur_LP.webp?v=1734325750&width=5760",
+        description: "Deftones' 'Around the Fur' builds on the raw intensity of their debut 'Adrenaline,' with sinister nuances added to their already aggressive sound. \"My Own Summer (Shove It)\" sets the tone with a blend of sinewy guitars and eerie whispers mixed with explosive crunch. Sepultura's Max Cavalera contributes guitar and vocals on \"Headup,\" while \"MX\" features Chino Moreno trading vocals with Annalynn Cunningham in a scathing critique of rock star mentality. Moreno showcases his vocal range, from breathy and psychotic to hauntingly melodic, while guitarist Stephen Carpenter's heavy sound is muscular yet nimble. Moreno's otherworldly screams drive the album's ferocity, making it a relentless force. This LP version is pressed on 180g vinyl.",
+        description_zh: "Deftones 的《Around the Fur》建立在他們首張專輯《Adrenaline》的原始強度之上，為他們原本就極具侵略性的聲音增添了陰險的細微差別。《My Own Summer (Shove It)》以強健的吉他、怪誕的低語與爆炸性的嘎吱聲混合，奠定了基調。Sepultura 的 Max Cavalera 在《Headup》中貢獻了吉他和人聲，而《MX》則由 Chino Moreno 與 Annalynn Cunningham 輪流演唱，對搖滾明星的心態進行了嚴厲的批判。Moreno 展現了他的音域，從氣聲、神經質到令人難以忘懷的旋律，而吉他手 Stephen Carpenter 的沉重聲音既肌肉感十足又靈活。Moreno 超凡脫俗的尖叫聲驅動了專輯的兇猛，使其成為一股無情的所向披靡之力。此 LP 版本壓製於 180 克黑膠上。"
       },
       {
         title: "Hotel California [180-gram]",
         artist: "Eagles",
         price: "$24.99",
-        img: "https://vinyl.com/cdn/shop/files/8258506817841_85quality_Eagles_-_Hotel_California.webp?v=1734325795&width=5760"
+        img: "https://vinyl.com/cdn/shop/files/8258506817841_85quality_Eagles_-_Hotel_California.webp?v=1734325795&width=5760",
+        description: "Immerse yourself in the timeless rock classic \"Hotel California\" by the Eagles, now available on limited edition 180 gram vinyl LP. Released in late 1976, this fifth studio album marked a pivotal moment for the band, introducing guitarist Joe Walsh and bidding farewell to founding member Bernie Leadon. This iconic album is a masterpiece of storytelling and musical craftsmanship, featuring unforgettable tracks that have defined generations. The album includes the hauntingly beautiful title track \"Hotel California,\" as well as rock anthems like \"Life in the Fast Lane\" and \"New Kid in Town.\" Delve into deeper cuts like \"The Last Resort,\" which showcase the band's unparalleled ability to blend rock, country, and folk influences. This 180 gram vinyl pressing not only offers superior sound quality but also stands as a collector's piece for any music enthusiast. Revisit the magic of \"Hotel California\" and experience the Eagles at their very best.",
+        description_zh: "沉浸在 Eagles 永恆的搖滾經典《Hotel California》中，現已推出限量版 180 克黑膠唱片。這張第五張錄音室專輯於 1976 年底發行，是樂團的關鍵時刻，引進了吉他手 Joe Walsh 並告別了創始成員 Bernie Leadon。這張標誌性的專輯是故事敘述和音樂工藝的傑作，收錄了定義了幾代人的難忘曲目。專輯包含淒美的主打歌《Hotel California》，以及《Life in the Fast Lane》和《New Kid in Town》等搖滾頌歌。深入探索像《The Last Resort》這樣的深度曲目，展現了樂團融合搖滾、鄉村和民謠影響的無與倫比的能力。這張 180 克黑膠壓片不僅提供卓越的音質，也是任何音樂愛好者的收藏品。重溫《Hotel California》的魔力，體驗 Eagles 的最佳狀態。"
       }
     ],
     "Hip Hop": [
@@ -547,6 +578,8 @@ document.addEventListener("DOMContentLoaded", () => {
         price: "$29.99",
         originalPrice: "$39.99",
         img: "https://cdn.shopify.com/s/files/1/0704/2026/7313/files/8258503573809_85quality_SZA_vinyl_ctrl_2LP.webp?v=1734325779",
+        description: "Experience the rich, evocative soundscapes of SZA's debut album \"CTRL\" with this stunning green 2LP vinyl edition. Released in 2017 to both critical acclaim and commercial success, \"CTRL\" features collaborations with top artists like Kendrick Lamar and Travis Scott, and includes chart-topping hits such as \"Love Galore.\" The album's production involved a stellar lineup of talent, including GRAMMY-nominated Carter Lang and multi-platinum producer ThankGod4Cody, who helped craft its opulent sounds and heartfelt storytelling. This limited double-colored vinyl pressing is encased in a gatefold jacket, offering a luxurious visual and auditory experience. \"CTRL\" continues to resonate deeply with listeners, blending smooth R&B vibes with raw, introspective lyrics. A must-have for vinyl collectors and fans of SZA, this edition not only celebrates her groundbreaking work but also ensures the album's timeless appeal is preserved in stunning fidelity.",
+        description_zh: "體驗 SZA 首張專輯《CTRL》豐富而引人入勝的音樂景觀，這張令人驚豔的綠色雙黑膠唱片版本絕對值得收藏。於 2017 年發行後獲得各界好評與商業成功，《CTRL》收錄了與 Kendrick Lamar 和 Travis Scott 等頂尖藝人的合作曲目，並包含《Love Galore》等熱門金曲。專輯製作陣容強大，包括葛萊美提名製作人 Carter Lang 和多白金製作人 ThankGod4Cody，他們共同打造了這張專輯奢華的聲音與真摯的故事敘述。這款限量雙色黑膠唱片採用摺頁封套包裝，提供奢華的視覺與聽覺體驗。《CTRL》持續與聽眾產生深刻共鳴，融合了流暢的 R&B 氛圍與原始、內省的歌詞。這是黑膠收藏家和 SZA 粉絲的必備之作，此版本不僅慶祝了她的開創性作品，更確保了專輯永恆的魅力以驚人的保真度得以保存。"
       },
       {
         title: "good kid, m.A.A.d city",
@@ -554,6 +587,8 @@ document.addEventListener("DOMContentLoaded", () => {
         price: "$29.99",
         originalPrice: "$39.99",
         img: "https://cdn.shopify.com/s/files/1/0704/2026/7313/files/8258502394161_85quality_Kendrick_Lamar_-_good_kid_m_A_A_d_city_2LP.webp?v=1734325785",
+        description: "Celebrate a decade of Kendrick Lamar's groundbreaking work with the \"good kid, m.A.A.d city\" now available on double 180-gram vinyl LP. Originally released in 2012, this critically acclaimed album tells a compelling narrative of Lamar's experiences growing up in Compton, blending vivid storytelling with masterful lyricism and innovative production. Featuring standout tracks like \"Swimming Pools (Drank),\" \"Bitch, Don’t Kill My Vibe,\" and \"m.A.A.d city,\" this album has cemented Lamar's status as one of hip-hop's most influential artists. This 10th Anniversary Edition offers superior sound quality with its 180-gram vinyl pressing, providing an immersive listening experience that captures the depth and nuance of Lamar's work. The double LP set is housed in a beautifully designed package, making it a must-have for fans and collectors alike. Add \"good kid, m.A.A.d city (10th Anniversary Edition)\" to your vinyl collection and revisit the raw, unfiltered brilliance of Kendrick Lamar's seminal album, a cornerstone of modern hip-hop.",
+        description_zh: "藉由這張現已推出的 180 克雙黑膠唱片，慶祝 Kendrick Lamar 具開創性的作品《good kid, m.A.A.d city》發行十週年。這張廣受好評的專輯最初於 2012 年發行，講述了 Lamar 在康普頓成長的引人入勝故事，將生動的故事敘述與精湛的歌詞和創新的製作完美融合。收錄《Swimming Pools (Drank)》、《Bitch, Don’t Kill My Vibe》和《m.A.A.d city》等傑出曲目，這張專輯鞏固了 Lamar 作為嘻哈界最具影響力藝術家之一的地位。此十週年紀念版採用 180 克黑膠壓製，提供卓越的音質，帶來身歷其境的聆聽體驗，捕捉 Lamar 作品的深度與細微之處。雙 LP 套裝包裝精美，是粉絲和收藏家的必備之選。將《good kid, m.A.A.d city (10th Anniversary Edition)》加入您的黑膠收藏，重溫 Kendrick Lamar 這張奠定現代嘻哈基石的開創性專輯中原始、未經修飾的才華。"
       },
       {
         title: "IGOR",
@@ -561,6 +596,8 @@ document.addEventListener("DOMContentLoaded", () => {
         price: "$29.99",
         originalPrice: "$39.99",
         img: "https://cdn.shopify.com/s/files/1/0704/2026/7313/files/8258501869873_85quality_Tyler_the_creator_vinyl_igor_LP.webp?v=1734325769",
+        description: "Immerse yourself in the innovative soundscape of Tyler, The Creator's \"IGOR,\" available on vinyl. Released in 2019, this groundbreaking album marked a significant evolution in Tyler's artistic journey, blending elements of funk, rap, and R&B into a cohesive narrative of love and heartbreak. \"IGOR\" earned critical acclaim and a Grammy Award for Best Rap Album, showcasing Tyler's prowess as a producer and his unique approach to music creation, with all songs produced by Tyler himself. The \"IGOR\" vinyl is not just a musical album; it's an auditory experience that invites listeners into Tyler's eclectic and vivid world. This release features hit singles like \"Earfquake\" and \"I Think,\" which exemplify Tyler's signature blend of melodic choruses and innovative production. Owning this vinyl allows fans to appreciate the rich, detailed layers of sound that Tyler meticulously crafted, making it a must-have for collectors and aficionados of forward-thinking music.",
+        description_zh: "沉浸在 Tyler, The Creator 的《IGOR》創新音景中，現已推出黑膠版本。這張於 2019 年發行的開創性專輯標誌著 Tyler 藝術旅程的重大演變，將放克、饒舌和 R&B 元素融合成為關於愛與心碎的連貫敘事。《IGOR》贏得了好評並榮獲葛萊美最佳饒舌專輯獎，展現了 Tyler 作為製作人的實力以及他獨特的音樂創作方式——所有歌曲均由 Tyler 親自製作。《IGOR》黑膠不僅是一張音樂專輯，更是一種聽覺體驗，邀請聽眾進入 Tyler 兼收並蓄且生動的世界。此發行版本收錄了《Earfquake》和《I Think》等熱門單曲，這些歌曲體現了 Tyler 標誌性的旋律副歌與創新製作的融合。擁有這張黑膠唱片讓粉絲能夠欣賞 Tyler 精心打造的豐富、細膩的聲音層次，使其成為前衛音樂收藏家和愛好者的必備之作。"
       },
       {
         title: "Swimming",
@@ -568,6 +605,8 @@ document.addEventListener("DOMContentLoaded", () => {
         price: "$29.99",
         originalPrice: "$39.99",
         img: "https://cdn.shopify.com/s/files/1/0704/2026/7313/files/8448090997041_85quality_Mac_Miller_-_Swimming_2LP.webp?v=1734325758",
+        description: "Dive into the profound depth of Mac Miller's \"Swimming\" with this essential double vinyl release. The album, celebrated for its introspective lyricism and complex production, showcases Miller's evolution as an artist, exploring themes of self-care and personal growth. Notable tracks like \"Self Care\" and \"Ladders\" highlight his unique blend of hip-hop, jazz, and soul, backed by production from notable collaborators such as Jon Brion, who helped to shape the album’s rich, textured soundscapes. \"Swimming\" represents a pivotal moment in Mac Miller’s career, offering a poignant reflection on his struggles and triumphs. This vinyl edition brings the album’s auditory experience to life, making it a must-have for fans and collectors alike. The release not only honors Mac Miller’s artistic legacy but also serves as a reminder of his profound impact on music and culture. It’s a perfect way to experience the album’s lush arrangements and heartfelt lyrics in the highest fidelity.",
+        description_zh: "透過這張必備的雙黑膠發行，深入 Mac Miller《Swimming》的深邃意境。這張專輯以其內省的歌詞和複雜的製作而聞名，展現了 Miller 作為藝術家的演變，探索了自我照顧和個人成長的主題。《Self Care》和《Ladders》等著名曲目凸顯了他融合嘻哈、爵士和靈魂樂的獨特風格，並由 Jon Brion 等知名合作者製作，協助塑造了專輯豐富、有質感的音景。《Swimming》代表了 Mac Miller 職業生涯的關鍵時刻，對他的掙扎與勝利提供了深刻的反思。此黑膠版本將專輯的聽覺體驗帶入生活，使其成為粉絲和收藏家的一大必備。這次發行不僅向 Mac Miller 的藝術遺產致敬，也提醒著我們他對音樂和文化的深遠影響。這是以最高保真度體驗專輯豐富編曲和真摯歌詞的完美方式。"
       },
     ],
     Classical: [
@@ -590,36 +629,48 @@ document.addEventListener("DOMContentLoaded", () => {
         artist: "Seatbelts",
         price: "$31.99",
         img: "https://vinyl.com/cdn/shop/files/8258512159025_85quality_Seatbelts_-_Cowboy_Bebop_Original_Series_Soundtrack.webp?v=1734326229&width=5760",
+        description: "Double vinyl LP pressing. Housed in a gatefold jacket with printed inner sleeves. The Bebop crew is just trying to make a buck. This motley lot of intergalactic loners teams up to track down fugitives and turn them in for cold hard cash. Spike is a hero whose cool façade hides a dark and deadly past. The pilot Jet is a bruiser of a brute who can't wait to collect the next bounty. Faye Valentine is a femme fatale prone to breaking hearts and separating fools from their money. Along for the ride are the brilliant, but weird, hacker Ed and a super-genius Welsh Corgi named Ein. On their own, any one of them is likely to get lost in the sprawl of space, but together, they're they most entertaining gang of bounty hunters in the year 2071. Composed and performed by Yoko Kanno and the band Seatbelts, the music of Cowboy Bebop is one of the signature elements of the series. The energetic jazz-infused pieces rip and roar across the stars and are as indispensable as the crew of the Bebop themselves.",
+        description_zh: "雙片黑膠唱片。折頁封套設計，附印刷內套。Bebop 的船員們只是想賺點錢。這個由星際孤獨者組成的雜牌軍聯手追捕逃犯，換取冰冷的現金。史派克是一個外表冷酷但隱藏著黑暗致命過去的英雄。飛行員傑特是一個急於收取下一次賞金的壯漢。菲·范倫汀是一位傾向於讓男人心碎並騙光他們錢財的蛇蠍美人。隨行的還有天才駭客艾德和一隻名叫愛因的超天才柯基犬。單打獨鬥時，他們任何一個都可能迷失在浩瀚的太空中，但在一起，他們是 2071 年最有趣的賞金獵人團夥。由菅野洋子和 Seatbelts 樂團創作與演奏，Cowboy Bebop 的音樂是該系列的標誌性元素之一。充滿活力的爵士風格樂曲在星際間咆哮，與 Bebop 的船員們一樣不可或缺。"
       },
       {
         title: "The Music Never Stopped: The Roots of the Grateful Dead",
         artist: "Various Artists",
         price: "$24.99",
         img: "https://vinyl.com/cdn/shop/files/9405447405873_85quality_4284265-3084959.webp?v=1734326317&width=5760",
+        description: "In their long career The Grateful Dead have been inspired by a stunning variety of American musical artists and traditions from blues to country to rock to folk - some of the most exciting and moving music ever recorded. Here are the original versions of The Dead's best loved cover tunes that surprise and delight with their musical depth, originality, and feeling. This collection has been lovingly compiled by a group of Dead scholars and enthusiasts.",
+        description_zh: "在其漫長的職業生涯中，The Grateful Dead 受到了從藍調、鄉村、搖滾到民謠等各種美國音樂藝術家和傳統的啟發——這是有史以來最令人興奮和感動的音樂之一。這裡收錄了 The Dead 最受喜愛的翻唱曲目的原始版本，其音樂深度、原創性和情感令人驚喜和愉悅。這個合集由一群 Dead 學者和愛好者精心編製。"
       },
       {
         title: "Electric Ladyland [2LP]",
         artist: "Jimi Hendrix",
         price: "$29.99",
         img: "https://vinyl.com/cdn/shop/files/8258511634737_85quality_Jimi_Hendrix_-_Electric_Ladyland_2LP.webp?v=1734326029&width=5760",
+        description: "Dive into the revolutionary sounds of Jimi Hendrix with Electric Ladyland, his third and final studio album, now available on double 180-gram vinyl. Released in 1968, this album is an iconic milestone in rock history, pushing the boundaries of the genre and solidifying Hendrix's status as a guitar virtuoso. Featuring sixteen tracks, including the legendary 'Voodoo Child (Slight Return),' 'Have You Ever Been (To Electric Ladyland),' and Hendrix's renowned cover of Bob Dylan's 'All Along the Watchtower,' Electric Ladyland is a masterclass in blending psychedelic rock, blues, funk, and experimental sounds.",
+        description_zh: "深入體驗 Jimi Hendrix 的革命性聲音，《Electric Ladyland》是他的第三張也是最後一張錄音室專輯，現已推出雙 180 克黑膠版本。這張專輯發行於 1968 年，是搖滾史上的標誌性里程碑，突破了流派的界限，鞏固了 Hendrix 作為吉他大師的地位。收錄了十六首曲目，包括傳奇的 'Voodoo Child (Slight Return)'、'Have You Ever Been (To Electric Ladyland)' 以及 Hendrix 著名的 Bob Dylan 翻唱曲 'All Along the Watchtower'，《Electric Ladyland》是融合迷幻搖滾、藍調、放克和實驗聲音的傑作。"
       },
       {
         title: "Sound & Color [2LP Black, Pink & Magenta]",
         artist: "Alabama Shakes",
         price: "$33.99",
         img: "https://vinyl.com/cdn/shop/files/8335081865521_85quality_Alabama_Shakes_-_Sound_Color_Black_Pink_Magenta_2LP.webp?v=1734326083&width=5760",
+        description: "Sound & Color is the second studio album by American rock band Alabama Shakes. Released in April 2015 via ATO Records, the album debuted at number one on the US Billboard 200 albums chart. It was nominated for six Grammy Awards, including Album of the Year, and won four, including Best Alternative Music Album.",
+        description_zh: "《Sound & Color》是美國搖滾樂團 Alabama Shakes 的第二張錄音室專輯。該專輯於 2015 年 4 月透過 ATO Records 發行，首週即登上美國告示牌 200 強專輯榜冠軍。它獲得了六項葛萊美獎提名，包括年度專輯，並贏得了其中四項，包括最佳另類音樂專輯。"
       },
       {
         title: "Astral Weeks (180-gram)",
         artist: "Van Morrison",
         price: "$22.99",
         img: "https://cdn.shopify.com/s/files/1/0704/2026/7313/files/8335046869297_85quality_Van_Morrison_-_Astral_Weeks.webp?v=1734326361",
+        description: "Astral Weeks is the second studio album by Northern Irish singer-songwriter Van Morrison. It was recorded at Century Sound Studios in New York City during September and October 1968, and released in November of that year by Warner Bros. Records.",
+        description_zh: "《Astral Weeks》是北愛爾蘭創作歌手 Van Morrison 的第二張錄音室專輯。於 1968 年 9 月和 10 月在紐約市 Century Sound Studios 錄製，並於同年 11 月由華納兄弟唱片發行。"
       },
       {
         title: "Bridge Of Sighs",
         artist: "Robin Trower",
         price: "$13.99",
         img: "https://cdn.shopify.com/s/files/1/0704/2026/7313/files/8334903050545_85quality_3840251-2585813.webp?v=1734328057",
+        description: "Bridge of Sighs is the second solo album by the English guitarist and songwriter Robin Trower. Released in 1974, it is his most commercially successful album, reaching number 7 on the Billboard 200 chart.",
+        description_zh: "《Bridge of Sighs》是英國吉他手兼詞曲作者 Robin Trower 的第二張個人專輯。發行於 1974 年，這是他商業上最成功的專輯，在告示牌 200 強榜單上達到第 7 名。"
       },
     ],
   };
@@ -671,7 +722,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // Allow modal opening for these dynamic cards
       article.addEventListener("click", (e) => {
         e.preventDefault();
-        openProductModal(product.img, product.title, category, parseFloat(product.price.replace('$', '')));
+        openProductModal(product.img, product.title, category, parseFloat(product.price.replace('$', '')), product.description, product.description_zh);
       });
 
       productsContainer.appendChild(article);
@@ -764,15 +815,78 @@ document.addEventListener("DOMContentLoaded", () => {
   const modalPrice = document.getElementById("modal-price");
   const closeModal = document.querySelector(".close-modal");
 
-  const openProductModal = (img, title, category, basePrice) => {
+  const modalDesc = document.getElementById("modal-desc");
+  const renderModalDescription = (description, description_zh) => {
+    const modalDesc = document.getElementById("modal-desc");
+    if (!modalDesc) return;
+
+    const currentLang = localStorage.getItem('lang') || 'zh';
+
+    // Store descriptions for toggling
+    if (description) modalDesc.setAttribute('data-desc-en', description);
+    if (description_zh) modalDesc.setAttribute('data-desc-zh', description_zh);
+
+    const defaultDesc = "Experience the uncompressed, raw emotion of analog sound. This piece has been carefully verified for quality and authenticity.";
+
+    let descText = defaultDesc;
+    if (currentLang === 'zh' && description_zh) {
+      descText = description_zh;
+    } else if (description) {
+      descText = description;
+    }
+
+    modalDesc.innerText = descText;
+
+    // Reset state
+    modalDesc.classList.remove('truncated');
+    const existingBtn = modal.querySelector('.read-more-btn');
+    if (existingBtn) existingBtn.remove();
+
+    // Check if text is long enough to truncate
+    if (descText.length > 150) {
+      modalDesc.classList.add('truncated');
+
+      const readMoreBtn = document.createElement('button');
+      readMoreBtn.className = 'read-more-btn';
+      // Use Translations
+      readMoreBtn.innerText = translations[currentLang]['btn_read_more'];
+      readMoreBtn.setAttribute('data-i18n', 'btn_read_more');
+
+      readMoreBtn.onclick = (e) => {
+        e.preventDefault();
+        const isTruncated = modalDesc.classList.contains('truncated');
+
+        if (isTruncated) {
+          modalDesc.classList.remove('truncated');
+          // Switch to Show Less
+          const lang = localStorage.getItem('lang') || 'zh';
+          readMoreBtn.innerText = translations[lang]['btn_show_less'];
+          readMoreBtn.setAttribute('data-i18n', 'btn_show_less');
+        } else {
+          modalDesc.classList.add('truncated');
+          // Switch to Read More
+          const lang = localStorage.getItem('lang') || 'zh';
+          readMoreBtn.innerText = translations[lang]['btn_read_more'];
+          readMoreBtn.setAttribute('data-i18n', 'btn_read_more');
+        }
+      };
+
+      modalDesc.parentNode.insertBefore(readMoreBtn, modalDesc.nextSibling);
+    }
+  };
+
+  const openProductModal = (img, title, category, basePrice, description, description_zh) => {
     if (!modal) return;
     modalImg.src = img;
     modalTitle.innerText = title;
     modalCategory.innerText = category;
 
-    // Store base price for currency switching while open
-    modalPrice.setAttribute('data-base-price', basePrice);
-    modalPrice.innerText = formatPrice(basePrice, currentCurrency);
+    renderModalDescription(description, description_zh);
+
+    // Price Update logic
+    const priceDisplay = document.getElementById("modal-price");
+    priceDisplay.setAttribute('data-base-price', basePrice);
+    priceDisplay.innerText = formatPrice(basePrice, currentCurrency);
 
     // Update Add to Cart Button with specific product info
     const addBtn = modal.querySelector('.btn-primary');
@@ -782,19 +896,33 @@ document.addEventListener("DOMContentLoaded", () => {
       addBtn.parentNode.replaceChild(newBtn, addBtn);
 
       newBtn.addEventListener('click', () => {
-        CartManager.addItem({
-          title,
-          category,
-          price: basePrice,
-          img
-        });
-        hideModal();
+        // Check if CartManager exists, otherwise just log or mock
+        if (typeof CartManager !== 'undefined') {
+          CartManager.addItem({
+            title,
+            category,
+            price: basePrice,
+            img
+          });
+        } else {
+          console.warn("CartManager is not defined");
+          // Fallback or just close
+        }
+
+        // Hide modal
+        if (typeof hideModal === 'function') {
+          hideModal();
+        } else {
+          modal.style.display = "none";
+          document.body.style.overflow = "auto";
+        }
       });
     }
 
     modal.style.display = "block";
     document.body.style.overflow = "hidden";
   };
+
 
   // Keep existing event listeners for static cards if any remain,
   // but we replaced them. Kept for safety if user adds static ones back.
@@ -982,7 +1110,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Expose selection functions globally
   window.handleShippingChange = (selectElement) => {
     currentShippingCost = parseFloat(selectElement.value);
-    
+
     // Re-render totals only
     updateCartTotals();
   };
@@ -991,23 +1119,23 @@ document.addEventListener("DOMContentLoaded", () => {
     selectedPaymentMethod = selectElement.value;
     // Hide error on selection
     const err = document.getElementById('payment-error');
-    if(err) err.style.display = 'none';
+    if (err) err.style.display = 'none';
   };
 
   const updateCartTotals = () => {
-     const items = CartManager.getItems();
-     let subtotal = 0;
-     items.forEach(item => subtotal += item.price);
-     
-     const total = subtotal + currentShippingCost;
-     
-     const subtotalEl = document.getElementById('cart-subtotal');
-     const shippingEl = document.getElementById('cart-shipping');
-     const totalEl = document.getElementById('cart-total');
-     
-     if (subtotalEl) subtotalEl.innerText = formatPrice(subtotal, currentCurrency);
-     if (shippingEl) shippingEl.innerText = currentShippingCost === 0 ? 'Free' : formatPrice(currentShippingCost, currentCurrency);
-     if (totalEl) totalEl.innerText = formatPrice(total, currentCurrency);
+    const items = CartManager.getItems();
+    let subtotal = 0;
+    items.forEach(item => subtotal += item.price);
+
+    const total = subtotal + currentShippingCost;
+
+    const subtotalEl = document.getElementById('cart-subtotal');
+    const shippingEl = document.getElementById('cart-shipping');
+    const totalEl = document.getElementById('cart-total');
+
+    if (subtotalEl) subtotalEl.innerText = formatPrice(subtotal, currentCurrency);
+    if (shippingEl) shippingEl.innerText = currentShippingCost === 0 ? 'Free' : formatPrice(currentShippingCost, currentCurrency);
+    if (totalEl) totalEl.innerText = formatPrice(total, currentCurrency);
   };
 
   window.renderCart = () => {
@@ -1036,65 +1164,65 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Update Section Headers
     const shipHeader = shippingSection.querySelector('.section-heading');
-    if(shipHeader) shipHeader.innerText = t.cart_shipping_title;
+    if (shipHeader) shipHeader.innerText = t.cart_shipping_title;
 
     const payHeader = paymentSection.querySelector('.section-heading');
-    if(payHeader) payHeader.innerText = t.cart_payment_title;
+    if (payHeader) payHeader.innerText = t.cart_payment_title;
 
     // Update Dropdown Options (Re-inject to ensure translation)
     const shipSelect = document.getElementById('shipping-method');
-    if(shipSelect) {
-        // preserve value if possible, or just re-render is fine since we default to 0
-        const currentVal = shipSelect.value; 
-        shipSelect.innerHTML = `
+    if (shipSelect) {
+      // preserve value if possible, or just re-render is fine since we default to 0
+      const currentVal = shipSelect.value;
+      shipSelect.innerHTML = `
             <option value="0">${t.ship_std} - ${t.free}</option>
             <option value="15">${t.ship_exp} - $15.00</option>
         `;
-        shipSelect.value = currentVal;
+      shipSelect.value = currentVal;
     }
 
     const paySelect = document.getElementById('payment-method');
-    if(paySelect) {
-        const currentVal = paySelect.value;
-        paySelect.innerHTML = `
+    if (paySelect) {
+      const currentVal = paySelect.value;
+      paySelect.innerHTML = `
             <option value="" disabled selected>${t.pay_select}</option>
             <option value="credit_card">${t.pay_cc}</option>
             <option value="paypal">${t.pay_paypal}</option>
             <option value="crypto">${t.pay_crypto}</option>
         `;
-        // Ensure default selected is respected if value is empty
-        if(currentVal) paySelect.value = currentVal;
-        else paySelect.selectedIndex = 0; 
+      // Ensure default selected is respected if value is empty
+      if (currentVal) paySelect.value = currentVal;
+      else paySelect.selectedIndex = 0;
     }
-    
+
     // Update Error MSG
     const payError = document.getElementById('payment-error');
-    if(payError && t.pay_error) payError.innerText = t.pay_error;
+    if (payError && t.pay_error) payError.innerText = t.pay_error;
 
     // Update Summary Labels
-    if(summary) {
-        // We need to target specific spans. Let's rebuild the summary innerHTML structurally to match
-        // But cleaner to just update the text nodes if we can?
-        // Actually, re-rendering the logic inside updateCartTotals is better or just static HTML?
-        // The summary structure is static in HTML, but headers are text.
-        // Let's rely on updateCartTotals to handle value updates, but we need to update LABELS here.
-        // Or simpler: Just re-inject the summary structure with translated labels.
-        
-        // This part is tricky because buttons have onclick handlers.
-        // Use querySelector to update text directly.
-        
-        const rows = summary.querySelectorAll('.summary-row');
-        if(rows[0]) rows[0].firstElementChild.innerText = t.cart_subtotal + ":";
-        if(rows[1]) rows[1].firstElementChild.innerText = t.cart_shipping + ":";
-        if(rows[2]) rows[2].firstElementChild.innerText = t.cart_total + ":";
-        
-        const btns = summary.querySelectorAll('.checkout-btn');
-        if(btns[0]) btns[0].innerText = t.cart_checkout_btn;
-        if(btns[1]) btns[1].innerText = t.cart_continue_btn;
+    if (summary) {
+      // We need to target specific spans. Let's rebuild the summary innerHTML structurally to match
+      // But cleaner to just update the text nodes if we can?
+      // Actually, re-rendering the logic inside updateCartTotals is better or just static HTML?
+      // The summary structure is static in HTML, but headers are text.
+      // Let's rely on updateCartTotals to handle value updates, but we need to update LABELS here.
+      // Or simpler: Just re-inject the summary structure with translated labels.
+
+      // This part is tricky because buttons have onclick handlers.
+      // Use querySelector to update text directly.
+
+      const rows = summary.querySelectorAll('.summary-row');
+      if (rows[0]) rows[0].firstElementChild.innerText = t.cart_subtotal + ":";
+      if (rows[1]) rows[1].firstElementChild.innerText = t.cart_shipping + ":";
+      if (rows[2]) rows[2].firstElementChild.innerText = t.cart_total + ":";
+
+      const btns = summary.querySelectorAll('.checkout-btn');
+      if (btns[0]) btns[0].innerText = t.cart_checkout_btn;
+      if (btns[1]) btns[1].innerText = t.cart_continue_btn;
     }
 
     container.innerHTML = '';
-    
+
     items.forEach((item, index) => {
       const div = document.createElement('div');
       div.className = 'cart-item';
@@ -1116,24 +1244,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
     updateCartTotals();
   };
-  
+
   window.handleCheckout = () => {
     const t = translations[currentLang] || translations['en'];
-    
+
     if (!selectedPaymentMethod) {
-        // Show inline error
-        const err = document.getElementById('payment-error');
-        if(err) err.style.display = 'block';
-        return;
+      // Show inline error
+      const err = document.getElementById('payment-error');
+      if (err) err.style.display = 'block';
+      return;
     }
-    
+
     CartManager.clear();
     alert(t.cart_checkout_success || "Thank you for your purchase!");
-    
+
     // Reset state
     selectedPaymentMethod = null;
     currentShippingCost = 0; // Reset to default
-    
+
     if (window.renderCart) window.renderCart();
   };
 
@@ -1218,10 +1346,34 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-
-
+  // Inject Custom Styles for Dynamic Elements
+  // Inject Custom Styles for Dynamic Elements
+  const injectStyles = () => {
+    const styleInfo = `
+        .modal-desc.truncated {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .read-more-btn {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 0.9rem;
+            cursor: pointer;
+            color: #aaa;
+            text-decoration: underline;
+            margin-top: 10px;
+            display: inline-block;
+        }
+      `;
+    const style = document.createElement('style');
+    style.innerHTML = styleInfo;
+    document.head.appendChild(style);
+  };
 
   // Run on load
+  injectStyles();
   updateAuthUI();
 
   // Hook into language dropdown to refresh Auth UI

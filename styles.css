@@ -1368,25 +1368,29 @@ img {
 /* Custom Dropdown Styling */
 .checkout-select {
   width: 100%;
-  padding: 12px 15px; /* Reduced padding */
+  padding: 12px 15px;
+  /* Reduced padding */
   background: linear-gradient(145deg, #1f1f1f, #151515);
   border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 6px; /* Slightly tighter radius */
+  border-radius: 6px;
+  /* Slightly tighter radius */
   color: #e0e0e0;
   font-family: 'Quicksand', sans-serif;
-  font-size: 0.95rem; /* Reduced font size */
+  font-size: 0.95rem;
+  /* Reduced font size */
   font-weight: 500;
   letter-spacing: 0.5px;
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
-  
+
   /* Gold Arrow Icon - Scaled down slightly */
   background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22%23d4af37%22%3E%3Cpath%20d%3D%22M7%2010l5%205%205-5z%22%2F%3E%3C%2Fsvg%3E");
   background-repeat: no-repeat;
   background-position: right 15px center;
-  background-size: 20px; /* Smaller icon */
-  
+  background-size: 20px;
+  /* Smaller icon */
+
   cursor: pointer;
   transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
@@ -1455,6 +1459,35 @@ img {
   color: #ff4d4d;
   font-size: 0.85rem;
   margin-top: 8px;
-  display: none; /* Hidden by default */
+  display: none;
+  /* Hidden by default */
   font-family: var(--font-body);
+}
+
+/* Text Truncation */
+.truncated {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.read-more-btn {
+  display: inline-block;
+  color: var(--accent);
+  margin-top: 10px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  text-decoration: underline;
+  transition: color 0.3s;
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: var(--font-body);
+  text-align: left;
+  align-self: flex-start;
+}
+
+.read-more-btn:hover {
+  color: #fff;
 }
