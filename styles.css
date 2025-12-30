@@ -1340,3 +1340,121 @@ img {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* ===========================
+   Premium Checkout Styles
+   =========================== */
+
+.checkout-section {
+  margin-top: 50px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 40px;
+  animation: fadeIn 0.6s ease-out;
+}
+
+.section-heading {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  color: var(--accent);
+  margin-bottom: 25px;
+  letter-spacing: 1px;
+}
+
+.checkout-form-group {
+  margin-bottom: 35px;
+  max-width: 500px;
+}
+
+/* Custom Dropdown Styling */
+.checkout-select {
+  width: 100%;
+  padding: 12px 15px; /* Reduced padding */
+  background: linear-gradient(145deg, #1f1f1f, #151515);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 6px; /* Slightly tighter radius */
+  color: #e0e0e0;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 0.95rem; /* Reduced font size */
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  
+  /* Gold Arrow Icon - Scaled down slightly */
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22%23d4af37%22%3E%3Cpath%20d%3D%22M7%2010l5%205%205-5z%22%2F%3E%3C%2Fsvg%3E");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  background-size: 20px; /* Smaller icon */
+  
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.checkout-select:hover {
+  border-color: var(--accent);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  transform: translateY(-2px);
+  color: #fff;
+  background: linear-gradient(145deg, #252525, #1a1a1a);
+}
+
+.checkout-select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+  transform: translateY(-2px);
+}
+
+.checkout-select option {
+  background-color: #1a1a1a;
+  color: #fff;
+  padding: 15px;
+  font-size: 1rem;
+}
+
+/* Summary Section Enhancements */
+.cart-summary {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 30px;
+  border-radius: 8px;
+  margin-top: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  color: #aaa;
+  font-size: 1.05rem;
+  font-family: 'Lato', sans-serif;
+}
+
+.summary-row span:last-child {
+  color: #fff;
+  font-weight: 500;
+}
+
+.summary-row.total {
+  margin-top: 25px;
+  padding-top: 25px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 1.8rem;
+  font-family: 'Playfair Display', serif;
+}
+
+.summary-row.total span:last-child {
+  color: var(--accent);
+}
+
+.checkout-error {
+  color: #ff4d4d;
+  font-size: 0.85rem;
+  margin-top: 8px;
+  display: none; /* Hidden by default */
+  font-family: var(--font-body);
+}

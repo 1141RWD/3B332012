@@ -34,6 +34,8 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
+
+
     // If modal is open, update it
     const modal = document.getElementById("product-modal");
     if (modal && modal.style.display === "block") {
@@ -130,7 +132,23 @@ document.addEventListener("DOMContentLoaded", () => {
       auth_logout: "Logout",
       auth_failed: "Invalid email or password",
       auth_exists: "Account already exists",
-      cart_login_prompt: "Please login or register to view your cart."
+      cart_login_prompt: "Please login or register to view your cart.",
+      // New Cart UI
+      cart_shipping_title: "Shipping Method",
+      cart_payment_title: "Payment Method",
+      cart_subtotal: "Subtotal",
+      cart_shipping: "Shipping",
+      cart_total: "Total",
+      cart_checkout_btn: "Complete Order",
+      cart_continue_btn: "Continue Shopping",
+      ship_std: "Standard Shipping (5-7 Business Days)",
+      ship_exp: "Express Shipping (1-3 Business Days)",
+      pay_select: "Select Payment Method",
+      pay_cc: "Credit Card (Visa, Mastercard, Amex)",
+      pay_paypal: "PayPal",
+      pay_crypto: "Crypto (USDT, BTC, ETH)",
+      pay_error: "Please select a payment method.",
+      free: "Free"
     },
     zh: {
       nav_home: "首頁",
@@ -199,7 +217,23 @@ document.addEventListener("DOMContentLoaded", () => {
       auth_exists: "帳戶已存在",
       cart_login_prompt: "請先登入或註冊帳號以檢視購物車。",
       cart_empty: "您的購物車是空的。",
-      cart_checkout_success: "感謝您的購買！"
+      cart_checkout_success: "感謝您的購買！",
+      // New Cart UI
+      cart_shipping_title: "運送方式",
+      cart_payment_title: "付款方式",
+      cart_subtotal: "小計",
+      cart_shipping: "運費",
+      cart_total: "總計",
+      cart_checkout_btn: "完成訂單",
+      cart_continue_btn: "繼續購物",
+      ship_std: "標準運送 (5-7 工作天)",
+      ship_exp: "快速運送 (1-3 工作天)",
+      pay_select: "選擇付款方式",
+      pay_cc: "信用卡 (Visa, Mastercard, Amex)",
+      pay_paypal: "PayPal",
+      pay_crypto: "加密貨幣 (USDT, BTC, ETH)",
+      pay_error: "請選擇付款方式。",
+      free: "免費"
     }
   };
 
@@ -218,6 +252,8 @@ document.addEventListener("DOMContentLoaded", () => {
         el.innerText = t[key];
       }
     });
+    
+
   };
 
   // Language Dropdown Event Listener
@@ -892,6 +928,7 @@ document.addEventListener("DOMContentLoaded", () => {
       cart.push(product);
       localStorage.setItem(key, JSON.stringify(cart));
       updateCartCount();
+
       alert("Added to Cart!"); // Simple feedback
     },
     getItems: () => {
@@ -906,12 +943,14 @@ document.addEventListener("DOMContentLoaded", () => {
       cart.splice(index, 1);
       localStorage.setItem(key, JSON.stringify(cart));
       updateCartCount();
+
       if (window.renderCart) window.renderCart();
     },
     clear: () => {
       const key = CartManager.getKey();
       if (key) localStorage.removeItem(key);
       updateCartCount();
+
     }
   };
 
@@ -933,17 +972,50 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Expose for UI
   window.CartManager = CartManager;
-  window.handleCheckout = () => {
-    CartManager.clear();
-    const t = translations[currentLang] || translations['en'];
-    alert(t.cart_checkout_success || "Thank you for your purchase!");
-    if (window.renderCart) window.renderCart();
-  };
+
 
   // Render function for cart.html
+  // Render function for cart.html
+  let currentShippingCost = 0;
+  let selectedPaymentMethod = null;
+
+  // Expose selection functions globally
+  window.handleShippingChange = (selectElement) => {
+    currentShippingCost = parseFloat(selectElement.value);
+    
+    // Re-render totals only
+    updateCartTotals();
+  };
+
+  window.handlePaymentChange = (selectElement) => {
+    selectedPaymentMethod = selectElement.value;
+    // Hide error on selection
+    const err = document.getElementById('payment-error');
+    if(err) err.style.display = 'none';
+  };
+
+  const updateCartTotals = () => {
+     const items = CartManager.getItems();
+     let subtotal = 0;
+     items.forEach(item => subtotal += item.price);
+     
+     const total = subtotal + currentShippingCost;
+     
+     const subtotalEl = document.getElementById('cart-subtotal');
+     const shippingEl = document.getElementById('cart-shipping');
+     const totalEl = document.getElementById('cart-total');
+     
+     if (subtotalEl) subtotalEl.innerText = formatPrice(subtotal, currentCurrency);
+     if (shippingEl) shippingEl.innerText = currentShippingCost === 0 ? 'Free' : formatPrice(currentShippingCost, currentCurrency);
+     if (totalEl) totalEl.innerText = formatPrice(total, currentCurrency);
+  };
+
   window.renderCart = () => {
     const container = document.getElementById('cart-items-container');
-    const totalEl = document.getElementById('cart-total');
+    const summary = document.getElementById('cart-summary');
+    const shippingSection = document.getElementById('shipping-section');
+    const paymentSection = document.getElementById('payment-section');
+
     if (!container) return;
 
     const items = CartManager.getItems();
@@ -951,15 +1023,79 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (items.length === 0) {
       container.innerHTML = `<div class="empty-cart-msg">${t.cart_empty || "Your cart is empty."}</div>`;
-      if (totalEl) totalEl.innerText = formatPrice(0, currentCurrency);
+      if (summary) summary.style.display = 'none';
+      if (shippingSection) shippingSection.style.display = 'none';
+      if (paymentSection) paymentSection.style.display = 'none';
       return;
     }
 
-    container.innerHTML = '';
-    let total = 0;
+    // Show sections
+    if (summary) summary.style.display = 'block';
+    if (shippingSection) shippingSection.style.display = 'block';
+    if (paymentSection) paymentSection.style.display = 'block';
 
+    // Update Section Headers
+    const shipHeader = shippingSection.querySelector('.section-heading');
+    if(shipHeader) shipHeader.innerText = t.cart_shipping_title;
+
+    const payHeader = paymentSection.querySelector('.section-heading');
+    if(payHeader) payHeader.innerText = t.cart_payment_title;
+
+    // Update Dropdown Options (Re-inject to ensure translation)
+    const shipSelect = document.getElementById('shipping-method');
+    if(shipSelect) {
+        // preserve value if possible, or just re-render is fine since we default to 0
+        const currentVal = shipSelect.value; 
+        shipSelect.innerHTML = `
+            <option value="0">${t.ship_std} - ${t.free}</option>
+            <option value="15">${t.ship_exp} - $15.00</option>
+        `;
+        shipSelect.value = currentVal;
+    }
+
+    const paySelect = document.getElementById('payment-method');
+    if(paySelect) {
+        const currentVal = paySelect.value;
+        paySelect.innerHTML = `
+            <option value="" disabled selected>${t.pay_select}</option>
+            <option value="credit_card">${t.pay_cc}</option>
+            <option value="paypal">${t.pay_paypal}</option>
+            <option value="crypto">${t.pay_crypto}</option>
+        `;
+        // Ensure default selected is respected if value is empty
+        if(currentVal) paySelect.value = currentVal;
+        else paySelect.selectedIndex = 0; 
+    }
+    
+    // Update Error MSG
+    const payError = document.getElementById('payment-error');
+    if(payError && t.pay_error) payError.innerText = t.pay_error;
+
+    // Update Summary Labels
+    if(summary) {
+        // We need to target specific spans. Let's rebuild the summary innerHTML structurally to match
+        // But cleaner to just update the text nodes if we can?
+        // Actually, re-rendering the logic inside updateCartTotals is better or just static HTML?
+        // The summary structure is static in HTML, but headers are text.
+        // Let's rely on updateCartTotals to handle value updates, but we need to update LABELS here.
+        // Or simpler: Just re-inject the summary structure with translated labels.
+        
+        // This part is tricky because buttons have onclick handlers.
+        // Use querySelector to update text directly.
+        
+        const rows = summary.querySelectorAll('.summary-row');
+        if(rows[0]) rows[0].firstElementChild.innerText = t.cart_subtotal + ":";
+        if(rows[1]) rows[1].firstElementChild.innerText = t.cart_shipping + ":";
+        if(rows[2]) rows[2].firstElementChild.innerText = t.cart_total + ":";
+        
+        const btns = summary.querySelectorAll('.checkout-btn');
+        if(btns[0]) btns[0].innerText = t.cart_checkout_btn;
+        if(btns[1]) btns[1].innerText = t.cart_continue_btn;
+    }
+
+    container.innerHTML = '';
+    
     items.forEach((item, index) => {
-      total += item.price;
       const div = document.createElement('div');
       div.className = 'cart-item';
       div.innerHTML = `
@@ -978,7 +1114,27 @@ document.addEventListener("DOMContentLoaded", () => {
       container.appendChild(div);
     });
 
-    if (totalEl) totalEl.innerText = formatPrice(total, currentCurrency);
+    updateCartTotals();
+  };
+  
+  window.handleCheckout = () => {
+    const t = translations[currentLang] || translations['en'];
+    
+    if (!selectedPaymentMethod) {
+        // Show inline error
+        const err = document.getElementById('payment-error');
+        if(err) err.style.display = 'block';
+        return;
+    }
+    
+    CartManager.clear();
+    alert(t.cart_checkout_success || "Thank you for your purchase!");
+    
+    // Reset state
+    selectedPaymentMethod = null;
+    currentShippingCost = 0; // Reset to default
+    
+    if (window.renderCart) window.renderCart();
   };
 
   // Initial header count update
@@ -1061,6 +1217,9 @@ document.addEventListener("DOMContentLoaded", () => {
            `;
     }
   };
+
+
+
 
   // Run on load
   updateAuthUI();
