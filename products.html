@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products | Analog Soul</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Quicksand:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="site-header scrolled">
+        <div class="container header-container">
+            <div class="logo">
+                <a href="index.html">Analog Soul.</a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">首頁</a></li>
+                    <li><a href="index.html#shop">特價</a></li>
+                    <li class="nav-item-dropdown">
+                        <a href="#">商品<span class="dropdown-arrow">▾</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">爵士 (Jazz)</a></li>
+                            <li><a href="#">鄉村 (Country)</a></li>
+                            <li><a href="#">搖滾 (Rock)</a></li>
+                            <li><a href="#">嘻哈 (Hip Hop)</a></li>
+                            <li><a href="#">古典 (Classical)</a></li>
+                            <li><a href="#">藍調 (Blues)</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <div class="currency-selector">
+                    <span class="current-currency">USD</span>
+                    <ul class="currency-dropdown">
+                        <li>USD</li>
+                        <li>TWD</li>
+                        <li>EUR</li>
+                    </ul>
+                </div>
+                <a href="#" class="cart-icon">CART (0)</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main style="padding-top: 120px; padding-bottom: 80px;">
+        <div class="container">
+            <div class="section-header" style="margin-top: 40px;">
+                <h2 class="section-title">All Products</h2>
+                <p class="section-desc">Curated collection of vintage treasures.</p>
+            </div>
+
+            <div class="product-grid-page">
+                <!-- Using same product-card structure but in a grid -->
+                <article class="product-card">
+                    <div class="product-image">
+                        <div class="placeholder-img">
+                            <img src="image/The Dark Side Of The Moon.webp" loading="lazy" alt="Pink Floyd">
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">The Dark Side Of The Moon</h3>
+                        <p class="product-category">Pink Floyd</p>
+                        <span class="product-price original-price">$35.99</span>
+                        <span class="product-price sale-price">$25.99</span>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <div class="product-image">
+                        <div class="placeholder-img">
+                            <img src="image/legend.webp" loading="lazy" alt="Bob Marley">
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">The Legend</h3>
+                        <p class="product-category">Bob Marley</p>
+                        <span class="product-price original-price">$34.99</span>
+                        <span class="product-price sale-price">$24.99</span>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <div class="product-image">
+                        <div class="placeholder-img">
+                            <img src="image/riot.jpg" loading="lazy" alt="Paramore">
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Riot!</h3>
+                        <p class="product-category">Paramore</p>
+                        <span class="product-price original-price">$24.99</span>
+                        <span class="product-price sale-price">$14.99</span>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <div class="product-image">
+                        <div class="placeholder-img">
+                            <img src="image/Ctrl.webp" loading="lazy" alt="SZA">
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">CTRL</h3>
+                        <p class="product-category">SZA</p>
+                        <span class="product-price original-price">$29.99</span>
+                        <span class="product-price sale-price">$19.99</span>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <div class="product-image">
+                        <div class="placeholder-img">
+                            <img src="image/1984.webp" loading="lazy" alt="Van Halen">
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">1984</h3>
+                        <p class="product-category">Van Halen</p>
+                        <span class="product-price original-price">$27.99</span>
+                        <span class="product-price sale-price">$17.99</span>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <div class="product-image">
+                        <div class="placeholder-img">
+                            <img src="image/nervermind.webp" loading="lazy" alt="Nirvana">
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Nevermind</h3>
+                        <p class="product-category">Nirvana</p>
+                        <span class="product-price original-price">$32.99</span>
+                        <span class="product-price sale-price">$22.99</span>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <div class="product-image">
+                        <div class="placeholder-img">
+                            <img src="image/Facelift.webp" loading="lazy" alt="Alice in Chains">
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Facelift</h3>
+                        <p class="product-category">Alice in Chains</p>
+                        <span class="product-price original-price">$33.99</span>
+                        <span class="product-price sale-price">$23.99</span>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <div class="footer-col">
+                <h3>Analog Soul.</h3>
+                <p style="color: #666; width: 80%;">Est. 2025. Preserving the analog spirit in a digital world.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Explore</h4>
+                <ul>
+                    <li><a href="#">Shipping & Returns</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Terms</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Connect</h4>
+                <ul>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Facebook</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Analog Soul. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
