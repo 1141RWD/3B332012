@@ -135,73 +135,86 @@ img {
 .btn-secondary {
   color: var(--text-primary);
   border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
 /* Header Actions */
 .header-actions {
-    display: flex;
-    align-items: center;
-    gap: 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.auth-action {
+  display: flex;
+  align-items: center;
 }
 
 .language-selector,
 .currency-selector {
-    position: relative;
-    color: var(--text-primary);
-    cursor: pointer;
-    font-size: 0.9rem;
-    display: flex;
-    align-items: center;
+  position: relative;
+  color: var(--text-primary);
+  cursor: pointer;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
 }
 
 .language-selector i {
-    font-size: 1.1rem;
-    transition: color 0.3s;
+  font-size: 1.1rem;
+  transition: color 0.3s;
 }
 
 .language-selector:hover i,
 .currency-selector:hover {
-    color: var(--accent);
+  color: var(--accent);
 }
 
 .language-dropdown,
 .currency-dropdown {
-    position: absolute;
-    top: 100%;
-    right: 0;
-    background: #1a1a1a;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 10px 0;
-    min-width: 100px; /* Slightly wider for language names */
-    width: max-content;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(10px);
-    transition: all 0.3s ease;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
-    z-index: 1001; /* Ensure above header */
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: #1a1a1a;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 10px 0;
+  min-width: 100px;
+  /* Slightly wider for language names */
+  width: max-content;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+  z-index: 1001;
+  /* Ensure above header */
 }
 
 .language-selector:hover .language-dropdown,
 .currency-selector:hover .currency-dropdown {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
 }
 
 .language-dropdown li,
 .currency-dropdown li {
-    padding: 8px 20px;
-    cursor: pointer;
-    transition: background 0.2s;
-    color: #ccc;
-    font-size: 0.85rem;
+  padding: 8px 20px;
+  cursor: pointer;
+  transition: background 0.2s;
+  color: #ccc;
+  font-size: 0.85rem;
 }
 
 .language-dropdown li:hover,
 .currency-dropdown li:hover {
-    background: rgba(212, 175, 55, 0.1);
-    color: var(--accent);
+  background: rgba(212, 175, 55, 0.1);
+  color: var(--accent);
 }
 
 /* Header & Nav */
@@ -239,16 +252,19 @@ img {
   /* Layer 1 (Top): Yellow (Grow/Shrink), Layer 2 (Bottom): White (Static) */
   background-image: linear-gradient(to right, var(--accent), var(--accent)), linear-gradient(to right, #fff, #fff);
   background-size: 0% 100%, 100% 100%;
-  background-position: 100% 0, 0 0; /* Default: Yellow anchored Right (for exit shrink) */
+  background-position: 100% 0, 0 0;
+  /* Default: Yellow anchored Right (for exit shrink) */
   background-repeat: no-repeat;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  transition: background-size 0.5s ease-out; /* Only animate size */
+  transition: background-size 0.5s ease-out;
+  /* Only animate size */
 }
 
 .logo a:hover {
-  background-position: 0 0, 0 0; /* Hover: Snap Yellow to Left (for enter grow) */
+  background-position: 0 0, 0 0;
+  /* Hover: Snap Yellow to Left (for enter grow) */
   background-size: 100% 100%, 100% 100%;
 }
 
@@ -290,6 +306,11 @@ img {
   text-transform: uppercase;
   letter-spacing: 1px;
   color: var(--text-primary);
+  transition: color 0.3s ease;
+}
+
+.cart-icon:hover {
+  color: var(--accent);
 }
 
 /* Hero Section */
@@ -299,8 +320,7 @@ img {
   align-items: center;
   justify-content: center;
   position: relative;
-  background: url("https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=2564&auto=format&fit=crop")
-    no-repeat center center/cover;
+  background: url("https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=2564&auto=format&fit=crop") no-repeat center center/cover;
   background-attachment: fixed;
   /* Parallax effect */
 }
@@ -310,11 +330,9 @@ img {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-      180deg,
+  background: linear-gradient(180deg,
       rgba(18, 18, 18, 0.4) 0%,
-      rgba(18, 18, 18, 0.8) 100%
-    ),
+      rgba(18, 18, 18, 0.8) 100%),
     radial-gradient(circle at center, transparent 0%, #121212 120%);
   pointer-events: none;
 }
@@ -434,7 +452,7 @@ img {
 .category-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -464,7 +482,7 @@ img {
 .category-card:hover {
   border-color: var(--accent);
   transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
   z-index: 10;
 }
 
@@ -484,7 +502,8 @@ img {
 
 /* Back Button */
 .back-btn {
-  display: none; /* Hidden by default */
+  display: none;
+  /* Hidden by default */
   align-items: center;
   gap: 10px;
   background: transparent;
@@ -514,8 +533,10 @@ img {
   box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
   /* Transform to banner */
   width: 100%;
-  height: 250px; /* Shorter than default to act as header */
-  cursor: default; /* No longer clickable */
+  height: 250px;
+  /* Shorter than default to act as header */
+  cursor: default;
+  /* No longer clickable */
   z-index: 20;
 }
 
@@ -524,8 +545,9 @@ img {
 }
 
 .category-card.active .category-overlay {
-  background: linear-gradient(to top, rgba(0,0,0,0.95), rgba(0,0,0,0.2));
-  flex-direction: row; /* Layout horizontal */
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.2));
+  flex-direction: row;
+  /* Layout horizontal */
   align-items: flex-end;
   justify-content: space-between;
 }
@@ -543,7 +565,8 @@ img {
 
 /* When grid has an active item - FOCUS MODE */
 .category-grid.has-active {
-  grid-template-columns: 1fr; /* Single column */
+  grid-template-columns: 1fr;
+  /* Single column */
 }
 
 /* Hide others */
@@ -572,13 +595,14 @@ img {
   transform: translateY(0);
   height: auto;
   overflow: visible;
-  padding-bottom: 60px; /* Space at bottom */
+  padding-bottom: 60px;
+  /* Space at bottom */
 }
 
 /* Reusing Product Card Styles (Slightly adjusted for grid) */
 .product-card {
   /* min-width removed as it's grid now */
-  width: auto; 
+  width: auto;
   /* Fallback for carousel */
   min-width: 300px;
   background: #1a1a1a;
@@ -590,8 +614,8 @@ img {
 
 /* Specific overwrite for grid view products to not have min-width */
 .category-products-container .product-card {
-    min-width: auto;
-    width: 100%;
+  min-width: auto;
+  width: 100%;
 }
 
 .product-card:hover {
@@ -601,14 +625,15 @@ img {
 }
 
 .product-image {
-  height: 320px; /* Slightly smaller for grid */
+  height: 320px;
+  /* Slightly smaller for grid */
   overflow: hidden;
   position: relative;
 }
 
 /* Carousel specific override to be taller if needed, or keep uniform */
 .carousel-container .product-image {
-    height: 380px;
+  height: 380px;
 }
 
 .placeholder-img {
@@ -636,6 +661,8 @@ img {
 }
 
 .product-title {
+  font-family: 'Playfair Display', serif;
+  /* Added for premium look */
   font-size: 1.4rem;
   margin-bottom: 8px;
   color: #fff;
@@ -701,6 +728,7 @@ img {
     opacity: 0;
     transform: translateY(40px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -708,7 +736,9 @@ img {
 }
 
 @keyframes fadeIn {
-  to { opacity: 1; }
+  to {
+    opacity: 1;
+  }
 }
 
 /* Responsive */
@@ -722,6 +752,7 @@ img {
   .category-grid {
     grid-template-columns: 1fr;
   }
+
   .category-card {
     height: 250px;
   }
@@ -791,40 +822,48 @@ img {
 
 /* Footer */
 .site-footer {
-  background: #000;
-  padding: 100px 0 40px;
-  border-top: 1px solid #222;
+  background: #050505;
+  padding: 40px 0 20px 0;
+  /* Reduced padding further */
+  border-top: 1px solid #1a1a1a;
+  margin-top: auto;
 }
 
 .footer-content {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
-  gap: 60px;
-  margin-bottom: 40px; /* Reduced from 80px */
+  gap: 40px;
+  /* Reduced gap from 60px */
+  margin-bottom: 30px;
+  /* Reduced from 40px */
 }
 
 .footer-col h3 {
-  font-size: 2rem;
+  font-size: 1.8rem;
+  /* Slightly smaller font */
   color: #fff;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
+  /* Reduced margin */
 }
 
 .footer-col h4 {
   font-family: var(--font-body);
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 2px;
   color: #666;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
+  /* Reduced margin */
 }
 
 .footer-col ul li {
-  margin-bottom: 15px;
+  margin-bottom: 10px;
+  /* Reduced margin */
 }
 
 .footer-col a {
   color: #888;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   transition: color 0.3s;
 }
 
@@ -835,9 +874,10 @@ img {
 .copyright {
   text-align: center;
   border-top: 1px solid #1a1a1a;
-  padding-top: 20px; /* Reduced from 40px */
+  padding-top: 15px;
+  /* Reduced from 20px */
   color: #444;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
 }
 
 /* Modal */
@@ -1021,7 +1061,8 @@ img {
 
 .dropdown-menu a {
   display: block;
-  width: 100%; /* Ensure full width clickable */
+  width: 100%;
+  /* Ensure full width clickable */
   padding: 6px 25px;
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
@@ -1052,7 +1093,8 @@ img {
 /* Nested Submenu */
 .dropdown-menu .has-submenu {
   position: relative;
-  overflow: visible; /* Ensure submenu can be seen */
+  overflow: visible;
+  /* Ensure submenu can be seen */
 }
 
 .main-nav .submenu {
@@ -1117,7 +1159,8 @@ img {
   flex-direction: column;
   align-items: center;
   cursor: pointer;
-  width: 200px; /* Constrain width */
+  width: 200px;
+  /* Constrain width */
 }
 
 .singer-img {
@@ -1129,7 +1172,7 @@ img {
   margin-bottom: 25px;
   transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
   position: relative;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .singer-img img {
@@ -1220,7 +1263,7 @@ img {
   .newsletter-form {
     flex-direction: column;
   }
-  
+
   .newsletter-form button {
     width: 100%;
   }
@@ -1255,7 +1298,8 @@ img {
 .currency-dropdown {
   position: absolute;
   top: 100%;
-  right: 0; /* Align to right since it's on the right side */
+  right: 0;
+  /* Align to right since it's on the right side */
   background: rgba(18, 18, 18, 0.95);
   backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.1);
