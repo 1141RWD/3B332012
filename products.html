@@ -63,7 +63,26 @@
             <!-- Back Button (Hidden by default) -->
             <button id="back-to-categories" class="back-btn">
                 <i class="fas fa-arrow-left"></i> Back to Categories
-            </button>
+            </button> <!-- product modal -->
+            <div id="product-modal" class="modal">
+                <div class="modal-content">
+                    <div class="close-modal">&times;</div>
+                    <div class="modal-image">
+                        <img id="modal-img" src="" alt="Product Image">
+                    </div>
+                    <div class="modal-info">
+                        <h2 id="modal-title">Product Name</h2>
+                        <p id="modal-category" class="product-category">Category</p>
+                        <div style="width: 50px; height: 2px; background: var(--accent); margin: 20px 0;"></div>
+                        <p id="modal-desc" style="color: #ccc; line-height: 1.8; margin-bottom: 30px;">
+                            Experience the uncompressed, raw emotion of analog sound. This piece has been carefully verified for
+                            quality and authenticity.
+                        </p>
+                        <p id="modal-price" style="font-size: 2rem; color: #fff;">$0.00</p>
+                        <button class="btn btn-primary" style="margin-top: 30px; width: 100%;">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
 
             <!-- Category Grid -->
             <div class="category-grid reveal">
@@ -93,7 +112,7 @@
                 </div>
                 <!-- Hip Hop -->
                 <div class="category-card" data-category="Hip Hop">
-                    <img src="https://images.unsplash.com/photo-1621616872591-62d2222d6d02?q=80&w=1000&auto=format&fit=crop" alt="Hip Hop" loading="lazy">
+                    <img src="image/hiphop.jpg" alt="Hip Hop" loading="lazy">
                     <div class="category-overlay">
                         <h3>Hip Hop</h3>
                         <p>Rhythm & Poetry</p>
@@ -101,7 +120,7 @@
                 </div>
                 <!-- Classical -->
                 <div class="category-card" data-category="Classical">
-                    <img src="https://images.unsplash.com/photo-1507838153414-b4b713384ebd?q=80&w=1000&auto=format&fit=crop" alt="Classical" loading="lazy">
+                    <img src="image/classical.jpg" alt="Classical" loading="lazy">
                     <div class="category-overlay">
                         <h3>Classical</h3>
                         <p>Timeless Excellence</p>

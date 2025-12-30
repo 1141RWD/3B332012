@@ -1,4 +1,68 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // 1. Currency Logic
+  const exchangeRates = {
+      USD: 1,
+      TWD: 30,
+      EUR: 0.92
+  };
+  
+  let currentCurrency = localStorage.getItem('currency') || 'USD';
+  
+  const formatPrice = (priceVal, currency) => {
+      const rate = exchangeRates[currency];
+      const converted = priceVal * rate;
+      
+      switch(currency) {
+          case 'TWD':
+              return `NT$ ${Math.round(converted)}`;
+          case 'EUR':
+              return `€${converted.toFixed(2)}`;
+          default: // USD
+              return `$${converted.toFixed(2)}`;
+      }
+  };
+
+  const updatePriceDisplay = () => {
+      // Update HTML Header
+      document.querySelector('.current-currency').innerText = currentCurrency;
+
+      // Update static elements with data-base-price
+      document.querySelectorAll('.product-price').forEach(el => {
+          const basePrice = parseFloat(el.getAttribute('data-base-price'));
+          if (!isNaN(basePrice)) {
+              el.innerText = formatPrice(basePrice, currentCurrency);
+          }
+      });
+      
+      // If modal is open, update it
+      const modal = document.getElementById("product-modal");
+      if (modal && modal.style.display === "block") {
+          // We can't easily update modal without base price, 
+          // but next time it opens it will be correct. 
+          // For best UX, we could store base price on modal too, 
+          // but for now re-opening or just letting it be is okay 
+          // or we can hack it:
+           const modalPrice = document.getElementById("modal-price");
+           const base = modalPrice.getAttribute('data-base-price');
+           if (base) {
+               modalPrice.innerText = formatPrice(parseFloat(base), currentCurrency);
+           }
+      }
+  };
+
+  // Currency Dropdown Event Listener
+  document.querySelectorAll('.currency-dropdown li').forEach(item => {
+      item.addEventListener('click', () => {
+          currentCurrency = item.innerText;
+          localStorage.setItem('currency', currentCurrency);
+          updatePriceDisplay();
+      });
+  });
+
+  // Initial Update
+  updatePriceDisplay();
+
+
   // 1. Scroll Animations (Intersection Observer)
   const observerOptions = {
     threshold: 0.15,
@@ -269,14 +333,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 <div class="product-info">
                     <h3 class="product-title">${product.title}</h3>
                     <p class="product-category">${category}</p>
-                    <span class="product-price sale-price">${product.price}</span>
+                    <span class="product-price sale-price" data-base-price="${parseFloat(product.price.replace('$',''))}">${formatPrice(parseFloat(product.price.replace('$','')), currentCurrency)}</span>
                 </div>
             `;
 
       // Allow modal opening for these dynamic cards
       article.addEventListener("click", (e) => {
         e.preventDefault();
-        openProductModal(product.img, product.title, category, product.price);
+        openProductModal(product.img, product.title, category, parseFloat(product.price.replace('$','')));
       });
 
       productsContainer.appendChild(article);
@@ -369,12 +433,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const modalPrice = document.getElementById("modal-price");
   const closeModal = document.querySelector(".close-modal");
 
-  const openProductModal = (img, title, category, price) => {
+  const openProductModal = (img, title, category, basePrice) => {
     if (!modal) return;
     modalImg.src = img;
     modalTitle.innerText = title;
     modalCategory.innerText = category;
-    modalPrice.innerText = price;
+    
+    // Store base price for currency switching while open
+    modalPrice.setAttribute('data-base-price', basePrice);
+    modalPrice.innerText = formatPrice(basePrice, currentCurrency);
+    
     modal.style.display = "block";
     document.body.style.overflow = "hidden";
   };
@@ -387,15 +455,19 @@ document.addEventListener("DOMContentLoaded", () => {
       const imgEl = card.querySelector("img");
       const titleEl = card.querySelector(".product-title");
       const catEl = card.querySelector(".product-category");
-      const priceEl = card.querySelector(".product-price");
+      // Prefer sale price, fallback to any product price
+      const priceEl = card.querySelector(".sale-price") || card.querySelector(".product-price");
 
       if (imgEl && titleEl && catEl && priceEl) {
-        openProductModal(
-          imgEl.src,
-          titleEl.innerText,
-          catEl.innerText,
-          priceEl.innerText
-        );
+        const basePrice = parseFloat(priceEl.getAttribute('data-base-price'));
+        if (!isNaN(basePrice)) {
+            openProductModal(
+              imgEl.src,
+              titleEl.innerText,
+              catEl.innerText,
+              basePrice
+            );
+        }
       }
     });
   });
