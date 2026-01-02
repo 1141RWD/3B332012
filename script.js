@@ -2,8 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // 1. Currency Logic
   const exchangeRates = {
     USD: 1,
-    TWD: 30,
-    EUR: 0.92
+    TWD: 30
   };
 
   let currentCurrency = localStorage.getItem('currency') || 'USD';
@@ -15,16 +14,14 @@ document.addEventListener("DOMContentLoaded", () => {
     switch (currency) {
       case 'TWD':
         return `NT$ ${Math.round(converted)}`;
-      case 'EUR':
-        return `€${converted.toFixed(2)}`;
+
       default: // USD
         return `$${converted.toFixed(2)}`;
     }
   };
 
   const updatePriceDisplay = () => {
-    // Update HTML Header
-    document.querySelector('.current-currency').innerText = currentCurrency;
+
 
     // Update static elements with data-base-price
     document.querySelectorAll('.product-price').forEach(el => {
@@ -52,14 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  // Currency Dropdown Event Listener
-  document.querySelectorAll('.currency-dropdown li').forEach(item => {
-    item.addEventListener('click', () => {
-      currentCurrency = item.innerText;
-      localStorage.setItem('currency', currentCurrency);
-      updatePriceDisplay();
-    });
-  });
+
 
   // Initial Update
   updatePriceDisplay();
@@ -150,10 +140,20 @@ document.addEventListener("DOMContentLoaded", () => {
       pay_error: "Please select a payment method.",
       free: "Free",
       btn_read_more: "Read more",
-      btn_show_less: "Show less"
+      btn_show_less: "Show less",
+      // Orders
+      nav_orders: "My Orders",
+      order_id: "Order ID",
+      order_date: "Date",
+      order_total: "Total",
+      order_status: "Status",
+      order_empty: "No orders found."
     },
     zh: {
       nav_home: "首頁",
+      nav_sale: "特價",
+      nav_products: "商品",
+      nav_cart: "購物車",
       nav_sale: "特價",
       nav_products: "商品",
       nav_cart: "購物車",
@@ -202,7 +202,7 @@ document.addEventListener("DOMContentLoaded", () => {
       terms_3_title: "3. 隱私政策",
       terms_3_text: "您透過商店提交的個人資訊受我們的隱私政策管轄。我們不會將您的個人數據出售或分享給第三方用於行銷目的。",
       terms_4_title: "4. 服務與價格修改",
-      terms_4_text: "我們產品的價格如有變更，恕不另行通知。我們保留隨時修改或終止服務（或其任何部分或內容）的權利，恕不另行通知。",
+      terms_4_text: "我們產品的價格如有變更，恕不另行通知。我們保留隨時修改或終止服務（或其任何部分或內容 thereof）的權利，恕不另行通知。",
       terms_5_title: "5. 聯絡資訊",
       terms_5_text: "關於服務條款的問題應發送至 support@analogsoul.com。",
       // Auth
@@ -237,7 +237,14 @@ document.addEventListener("DOMContentLoaded", () => {
       pay_error: "請選擇付款方式。",
       free: "免費",
       btn_read_more: "閱讀更多",
-      btn_show_less: "收起內容"
+      btn_show_less: "收起內容",
+      // Orders
+      nav_orders: "我的訂單",
+      order_id: "訂單編號",
+      order_date: "日期",
+      order_total: "總金額",
+      order_status: "狀態",
+      order_empty: "沒有找到訂單。"
     }
   };
 
@@ -246,6 +253,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const updateLanguage = (lang) => {
     currentLang = lang;
     localStorage.setItem('lang', lang);
+
+    // Sync Currency with Language
+    if (lang === 'zh') {
+      currentCurrency = 'TWD';
+    } else {
+      currentCurrency = 'USD'; // Default to USD for English or others
+    }
+    localStorage.setItem('currency', currentCurrency);
+    if (typeof updatePriceDisplay === 'function') updatePriceDisplay();
 
     const t = translations[lang];
     if (!t) return;
@@ -533,7 +549,7 @@ document.addEventListener("DOMContentLoaded", () => {
         originalPrice: "$39.99",
         img: "https://vinyl.com/cdn/shop/files/8258505507121_85quality_paramore_riot_silver_vinyl.webp?v=1734325769&width=800&quality=75",
         description: "Celebrate a milestone in pop-punk history with Paramore's \"Riot!,\" reissued in a stunning silver vinyl for Fueled By Ramen's 25th anniversary. This album, originally released in 2007, is a powerhouse of high-energy tracks, including the explosive hits \"Misery Business\" and \"That's What You Get.\" The production, led by David Bendeth, captures the vibrant and rebellious spirit of the band, propelling \"Riot!\" to critical acclaim and earning it a place as a genre-defining work. This special edition not only commemorates the album's impact but also celebrates the label's legacy in shaping modern punk music. The 25th Anniversary Edition of \"Riot!\" offers fans both nostalgia and a fresh take on beloved classics, now pressed on silver vinyl that adds a collectible twist. Paramore's breakthrough album features their signature blend of catchy melodies and heartfelt lyrics, now enhanced with premium sound quality. This release is an essential addition to any vinyl collector's library, ensuring that the spirited anthems of Paramore continue to inspire new generations of music lovers. Whether you're rediscovering the album or experiencing it for the first time, \"Riot!\" remains a vibrant testament to Paramore's enduring appeal and influence in the rock scene.",
-        description_zh: "慶祝 Paramore 流行龐克歷史上的里程碑，《Riot!》以令人驚豔的銀色黑膠重新發行，紀念 Fueled By Ramen 成立 25 週年。這張專輯最初於 2007 年發行，充滿了高能量的曲目，包括爆炸性的熱門歌曲《Misery Business》和《That's What You Get》。由 David Bendeth 製作，捕捉了樂團充滿活力和叛逆的精神，將《Riot!》推向好評，並奠定了其作為流派定義之作的地位。此特別版不僅紀念了專輯的影響力，也慶祝了該廠牌在塑造現代龐克音樂方面的傳承。《Riot!》25 週年紀念版為粉絲提供了懷舊與對心愛經典的全新詮釋，壓製於銀色黑膠上，增添了收藏價值。Paramore 的突破性專輯展現了他們標誌性的朗朗上口的旋律與真摯歌詞的融合，現在更以優質的音質呈現。此發行是任何黑膠收藏家庫存中的必備之選，確保 Paramore 精神飽滿的頌歌繼續激勵新一代的音樂愛好者。無論您是重新發現這張專輯還是初次體驗，《Riot!》仍然是 Paramore 在搖滾界持久魅力和影響力的生動證明。"
+        description_zh: "慶祝 Paramore 流行龐克歷史上的里程碑，《Riot!》以令人驚豔的銀色黑膠重新發行，紀念 Fueled By Ramen 成立 25 週年。這張專輯最初於 2007 年發行，充滿了高能量的曲目，包括爆炸性的熱門歌曲《Misery Business》和《That's What You Get》。由 David Bendeth 製作，捕捉了樂團充滿活力和叛逆的精神，將《Riot!》推向好評，並奠定了其作為流派定義之作的地位。此特別版不僅紀念了專輯的影響力，也慶祝了該廠牌在塑造現代龐克音樂方面的傳承。《Riot!》25 週年紀念版為粉絲提供了懷舊與對心愛經典的全新詮釋，壓製於銀色黑膠上，增添了收藏價值。Paramore 的突破性專輯 features 他們標誌性的朗朗上口的旋律與真摯歌詞的融合，現在更以優質的音質呈現。此發行是任何黑膠收藏家庫存中的必備之選，確保 Paramore 精神飽滿的頌歌繼續激勵新一代的音樂愛好者。無論您是重新發現這張專輯還是初次體驗，《Riot!》仍然是 Paramore 在搖滾界持久魅力和影響力的生動證明。"
       },
       {
         title: "Nevermind",
@@ -1411,7 +1427,34 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
+    // Save Order Mock
+    const cartItems = CartManager.getItems();
+    if (cartItems.length > 0) {
+      const userStr = localStorage.getItem('currentUser');
+      if (userStr) {
+        const user = JSON.parse(userStr);
+        const ordersKey = 'orders_' + user.email;
+        const orders = JSON.parse(localStorage.getItem(ordersKey) || '[]');
+
+        // Calc total
+        let subtotal = 0;
+        cartItems.forEach(item => subtotal += item.price);
+        const total = subtotal + currentShippingCost;
+
+        const order = {
+          id: 'ORD-' + Date.now(),
+          date: new Date().toLocaleDateString(),
+          items: cartItems,
+          total: total,
+          currency: currentCurrency // Store currency to be safe
+        };
+        orders.push(order);
+        localStorage.setItem(ordersKey, JSON.stringify(orders));
+      }
+    }
+
     CartManager.clear();
+
     alert(t.cart_checkout_success || "Thank you for your purchase!");
 
     // Reset state
@@ -1577,5 +1620,57 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   }
+
+  // Render Orders Page
+  window.renderOrders = () => {
+    const container = document.getElementById('orders-list-container');
+    if (!container) return;
+
+    const userStr = localStorage.getItem('currentUser');
+    if (!userStr) {
+      window.location.href = 'login.html';
+      return;
+    }
+    const user = JSON.parse(userStr);
+    const ordersKey = 'orders_' + user.email;
+    const orders = JSON.parse(localStorage.getItem(ordersKey) || '[]');
+    const t = translations[currentLang] || translations['en'];
+
+    if (orders.length === 0) {
+      container.innerHTML = `<div class="empty-orders-msg">${t.order_empty}</div>`;
+      return;
+    }
+
+    container.innerHTML = '';
+    orders.reverse().forEach(order => {
+      const card = document.createElement('div');
+      card.className = 'order-card';
+
+      let itemsHtml = '';
+      order.items.forEach(item => {
+        itemsHtml += `
+            <div class="order-item-row" style="margin-bottom:5px;">
+                <span>${item.title} x 1</span>
+                <span>${formatPrice(item.price, order.currency || currentCurrency)}</span>
+            </div>
+           `;
+      });
+
+      card.innerHTML = `
+        <div class="order-header">
+            <span>${t.order_id}: ${order.id}</span>
+            <span>${t.order_date}: ${order.date}</span>
+        </div>
+        <div class="order-details">
+            ${itemsHtml}
+        </div>
+        <div class="order-total-row">
+            <span>${t.order_total}</span>
+            <span>${formatPrice(order.total, order.currency || currentCurrency)}</span>
+        </div>
+       `;
+      container.appendChild(card);
+    });
+  };
 
 });
