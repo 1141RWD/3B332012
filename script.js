@@ -1220,7 +1220,9 @@ document.addEventListener("DOMContentLoaded", () => {
     addItem: (product) => {
       const key = CartManager.getKey();
       if (!key) {
-        window.location.href = 'login.html';
+        const isHtmlDir = window.location.pathname.includes('/html/') || window.location.pathname.includes('\\html\\');
+        const loginPath = isHtmlDir ? 'login.html' : 'html/login.html';
+        window.location.href = loginPath;
         return;
       }
       let cart = JSON.parse(localStorage.getItem(key) || '[]');
