@@ -111,7 +111,7 @@ document.addEventListener("DOMContentLoaded", () => {
       terms_5_title: "5. Contact Information",
       terms_5_text: "Questions about the Terms of Service should be sent to us at support@analogsoul.com.",
       // Auth
-      auth_login: "Login / Sign Up",
+      auth_login: "Login",
       auth_register: "Sign Up",
       auth_name: "Full Name",
       auth_email: "Email",
@@ -206,7 +206,7 @@ document.addEventListener("DOMContentLoaded", () => {
       terms_5_title: "5. 聯絡資訊",
       terms_5_text: "關於服務條款的問題應發送至 support@analogsoul.com。",
       // Auth
-      auth_login: "登入 / 註冊",
+      auth_login: "登入",
       auth_register: "註冊",
       auth_name: "全名",
       auth_email: "電子郵件",
