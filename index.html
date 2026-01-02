@@ -8,6 +8,8 @@
     <link rel="icon" type="image/png" href="image/favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.shopify.com">
+    <link rel="preconnect" href="https://vinyl.com">
     <link
         href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Quicksand:wght@400;500;700&display=swap"
         rel="stylesheet">
@@ -38,6 +40,11 @@
             <div class="logo">
                 <a href="#">Analog Soul.</a>
             </div>
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
             <nav class="main-nav">
                 <ul>
                     <li><a href="#home" class="active" data-i18n="nav_home">首頁</a></li>
@@ -46,10 +53,12 @@
                         <a href="#"><span data-i18n="nav_products">商品</span><span class="dropdown-arrow">▾</span></a>
                         <ul class="dropdown-menu">
                             <li><a href="html/products.html?category=Jazz" data-i18n="cat_jazz">爵士 (Jazz)</a></li>
-                            <li><a href="html/products.html?category=Country" data-i18n="cat_country">鄉村 (Country)</a></li>
+                            <li><a href="html/products.html?category=Country" data-i18n="cat_country">鄉村 (Country)</a>
+                            </li>
                             <li><a href="html/products.html?category=Rock" data-i18n="cat_rock">搖滾 (Rock)</a></li>
-                            <li><a href="html/products.html?category=Hip Hop" data-i18n="cat_hiphop">嘻哈 (Hip Hop)</a></li>
-                            <li><a href="html/products.html?category=Classical" data-i18n="cat_classical">古典 (Classical)</a>
+                            <li><a href="html/products.html?category=Hip Hop" data-i18n="cat_hiphop">嘻哈 (Hip Hop)</a>
+                            </li>
+                            <li><a href="html/products.html?category=Punk" data-i18n="cat_punk">龐克 (Punk)</a>
                             </li>
                             <li><a href="html/products.html?category=Blues" data-i18n="cat_blues">藍調 (Blues)</a></li>
                         </ul>
@@ -73,7 +82,7 @@
                     </ul>
                 </div>
                 <!-- Swap Order: Cart then Auth -->
-                <a href="#" class="cart-icon"><span data-i18n="nav_cart">CART</span> (0)</a>
+                <a href="html/cart.html" class="cart-icon"><span data-i18n="nav_cart">CART</span> (0)</a>
                 <div class="auth-action" id="header-auth">
                     <a href="html/login.html" class="cart-icon" data-i18n="auth_login">Login</a>
                 </div>
@@ -81,340 +90,342 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="container hero-content">
-            <h1 class="hero-title">Recapture the <span>Moment.</span></h1>
-            <p class="hero-subtitle">Premium vintage cameras and vinyl records for the analog soul.</p>
-            <a href="#shop" class="btn btn-primary" data-i18n="btn_explore">探索商品</a>
-        </div>
-    </section>
-    <!-- Shop Section -->
-    <section id="shop" class="section shop-section">
-        <div class="container">
-            <div class="section-header reveal">
-                <h2 class="section-title" data-i18n="section_sale">優惠商品</h2>
-                <p class="section-desc">Up to 30% OFF!</p>
+    <div class="main-content-wrapper">
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="container hero-content">
+                <h1 class="hero-title">Recapture the <span>Moment.</span></h1>
+                <p class="hero-subtitle">Premium vintage cameras and vinyl records for the analog soul.</p>
+                <a href="#shop" class="btn btn-primary" data-i18n="btn_explore">探索商品</a>
             </div>
-
-            <div class="carousel-container reveal">
-                <button class="scroll-arrow prev">&#10094;</button>
-                <div class="product-track">
-                    <!-- Set 1 -->
-                    <article class="product-card">
-                        <div class="product-image">
-                            <!-- SZA - CTRL -->
-                            <div class="placeholder-img">
-                                <img src="https://cdn.shopify.com/s/files/1/0704/2026/7313/files/8258503573809_85quality_SZA_vinyl_ctrl_2LP.webp?v=1734325779"
-                                    loading="lazy" alt="SZA - CTRL">
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">CTRL</h3>
-                            <p class="product-category">SZA</p>
-                            <span class="product-price original-price" data-base-price="34.99">$34.99</span>
-                            <span class="product-price sale-price" data-base-price="24.99">$24.99</span>
-                        </div>
-                    </article>
-
-                    <article class="product-card">
-                        <div class="product-image">
-                            <!-- Kendrick Lamar -->
-                            <div class="placeholder-img">
-                                <img src="https://cdn.shopify.com/s/files/1/0704/2026/7313/files/8258502394161_85quality_Kendrick_Lamar_-_good_kid_m_A_A_d_city_2LP.webp?v=1734325785"
-                                    loading="lazy" alt="good kid, m.A.A.d city">
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">good kid, m.A.A.d city</h3>
-                            <p class="product-category">Kendrick Lamar</p>
-                            <span class="product-price original-price" data-base-price="39.99">$39.99</span>
-                            <span class="product-price sale-price" data-base-price="29.99">$29.99</span>
-                        </div>
-                    </article>
-
-                    <article class="product-card">
-                        <div class="product-image">
-                            <!-- Tyler, The Creator -->
-                            <div class="placeholder-img">
-                                <img src="https://cdn.shopify.com/s/files/1/0704/2026/7313/files/8258501869873_85quality_Tyler_the_creator_vinyl_igor_LP.webp?v=1734325769"
-                                    loading="lazy" alt="IGOR">
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">IGOR</h3>
-                            <p class="product-category">Tyler, The Creator</p>
-                            <span class="product-price original-price" data-base-price="37.99">$37.99</span>
-                            <span class="product-price sale-price" data-base-price="27.99">$27.99</span>
-                        </div>
-                    </article>
-
-                    <article class="product-card">
-                        <div class="product-image">
-                            <!-- Nirvana -->
-                            <div class="placeholder-img">
-                                <img src="https://cdn.shopify.com/s/files/1/0704/2026/7313/files/8258513305905_85quality_Nirvana_Nevermind_Vinyl_LP.webp?v=1734325766"
-                                    loading="lazy" alt="Nevermind">
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Nevermind</h3>
-                            <p class="product-category">Nirvana</p>
-                            <span class="product-price original-price" data-base-price="39.99">$39.99</span>
-                            <span class="product-price sale-price" data-base-price="29.99">$29.99</span>
-                        </div>
-                    </article>
-
-                    <article class="proㄅduct-card">
-                        <div class="product-image">
-                            <!-- Mac Miller -->
-                            <div class="placeholder-img">
-                                <img src="https://cdn.shopify.com/s/files/1/0704/2026/7313/files/8448090997041_85quality_Mac_Miller_-_Swimming_2LP.webp?v=1734325758"
-                                    loading="lazy" alt="Swimming">
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Swimming</h3>
-                            <p class="product-category">Mac Miller</p>
-                            <span class="product-price original-price" data-base-price="37.99">$37.99</span>
-                            <span class="product-price sale-price" data-base-price="27.99">$27.99</span>
-                        </div>
-                    </article>
-
-                    <article class="product-card">
-                        <div class="product-image">
-                            <!-- Paramore -->
-                            <div class="placeholder-img">
-                                <img src="https://cdn.shopify.com/s/files/1/0704/2026/7313/files/8258505507121_85quality_paramore_riot_silver_vinyl.webp?v=1734325769"
-                                    loading="lazy" alt="Riot!">
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Riot!</h3>
-                            <p class="product-category">Paramore</p>
-                            <span class="product-price original-price" data-base-price="31.99">$31.99</span>
-                            <span class="product-price sale-price" data-base-price="21.99">$21.99</span>
-                        </div>
-                    </article>
-
-                    <!-- Set 2 (Duplicate) -->
-                    <article class="product-card">
-                        <div class="product-image">
-                            <div class="placeholder-img">
-                                <img src="https://cdn.shopify.com/s/files/1/0704/2026/7313/files/8258503573809_85quality_SZA_vinyl_ctrl_2LP.webp?v=1734325779"
-                                    loading="lazy" alt="SZA - CTRL">
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">CTRL</h3>
-                            <p class="product-category">SZA</p>
-                            <span class="product-price original-price" data-base-price="34.99">$34.99</span>
-                            <span class="product-price sale-price" data-base-price="24.99">$24.99</span>
-                        </div>
-                    </article>
-
-                    <article class="product-card">
-                        <div class="product-image">
-                            <div class="placeholder-img">
-                                <img src="https://cdn.shopify.com/s/files/1/0704/2026/7313/files/8258502394161_85quality_Kendrick_Lamar_-_good_kid_m_A_A_d_city_2LP.webp?v=1734325785"
-                                    loading="lazy" alt="good kid, m.A.A.d city">
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">good kid, m.A.A.d city</h3>
-                            <p class="product-category">Kendrick Lamar</p>
-                            <span class="product-price original-price" data-base-price="39.99">$39.99</span>
-                            <span class="product-price sale-price" data-base-price="29.99">$29.99</span>
-                        </div>
-                    </article>
-
-                    <article class="product-card">
-                        <div class="product-image">
-                            <div class="placeholder-img">
-                                <img src="https://cdn.shopify.com/s/files/1/0704/2026/7313/files/8258501869873_85quality_Tyler_the_creator_vinyl_igor_LP.webp?v=1734325769"
-                                    loading="lazy" alt="IGOR">
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">IGOR</h3>
-                            <p class="product-category">Tyler, The Creator</p>
-                            <span class="product-price original-price" data-base-price="37.99">$37.99</span>
-                            <span class="product-price sale-price" data-base-price="27.99">$27.99</span>
-                        </div>
-                    </article>
-
-                    <article class="product-card">
-                        <div class="product-image">
-                            <div class="placeholder-img">
-                                <img src="https://cdn.shopify.com/s/files/1/0704/2026/7313/files/8258513305905_85quality_Nirvana_Nevermind_Vinyl_LP.webp?v=1734325766"
-                                    loading="lazy" alt="Nevermind">
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Nevermind</h3>
-                            <p class="product-category">Nirvana</p>
-                            <span class="product-price original-price" data-base-price="39.99">$39.99</span>
-                            <span class="product-price sale-price" data-base-price="29.99">$29.99</span>
-                        </div>
-                    </article>
-
-                    <article class="product-card">
-                        <div class="product-image">
-                            <div class="placeholder-img">
-                                <img src="https://cdn.shopify.com/s/files/1/0704/2026/7313/files/8448090997041_85quality_Mac_Miller_-_Swimming_2LP.webp?v=1734325758"
-                                    loading="lazy" alt="Swimming">
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Swimming</h3>
-                            <p class="product-category">Mac Miller</p>
-                            <span class="product-price original-price" data-base-price="37.99">$37.99</span>
-                            <span class="product-price sale-price" data-base-price="27.99">$27.99</span>
-                        </div>
-                    </article>
-
-                    <article class="product-card">
-                        <div class="product-image">
-                            <div class="placeholder-img">
-                                <img src="https://cdn.shopify.com/s/files/1/0704/2026/7313/files/8258505507121_85quality_paramore_riot_silver_vinyl.webp?v=1734325769"
-                                    loading="lazy" alt="Riot!">
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Riot!</h3>
-                            <p class="product-category">Paramore</p>
-                            <span class="product-price original-price" data-base-price="31.99">$31.99</span>
-                            <span class="product-price sale-price" data-base-price="21.99">$21.99</span>
-                        </div>
-                    </article>
-
-                    <!-- Set 3 (Duplicate) -->
-                    <article class="product-card">
-                        <div class="product-image">
-                            <div class="placeholder-img">
-                                <img src="https://cdn.shopify.com/s/files/1/0704/2026/7313/files/8258503573809_85quality_SZA_vinyl_ctrl_2LP.webp?v=1734325779"
-                                    loading="lazy" alt="SZA - CTRL">
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">CTRL</h3>
-                            <p class="product-category">SZA</p>
-                            <span class="product-price original-price" data-base-price="34.99">$34.99</span>
-                            <span class="product-price sale-price" data-base-price="24.99">$24.99</span>
-                        </div>
-                    </article>
-
-                    <article class="product-card">
-                        <div class="product-image">
-                            <div class="placeholder-img">
-                                <img src="https://cdn.shopify.com/s/files/1/0704/2026/7313/files/8258502394161_85quality_Kendrick_Lamar_-_good_kid_m_A_A_d_city_2LP.webp?v=1734325785"
-                                    loading="lazy" alt="good kid, m.A.A.d city">
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">good kid, m.A.A.d city</h3>
-                            <p class="product-category">Kendrick Lamar</p>
-                            <span class="product-price original-price" data-base-price="39.99">$39.99</span>
-                            <span class="product-price sale-price" data-base-price="29.99">$29.99</span>
-                        </div>
-                    </article>
-
-                    <article class="product-card">
-                        <div class="product-image">
-                            <div class="placeholder-img">
-                                <img src="https://cdn.shopify.com/s/files/1/0704/2026/7313/files/8258501869873_85quality_Tyler_the_creator_vinyl_igor_LP.webp?v=1734325769"
-                                    loading="lazy" alt="IGOR">
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">IGOR</h3>
-                            <p class="product-category">Tyler, The Creator</p>
-                            <span class="product-price original-price" data-base-price="37.99">$37.99</span>
-                            <span class="product-price sale-price" data-base-price="27.99">$27.99</span>
-                        </div>
-                    </article>
-
-                    <article class="product-card">
-                        <div class="product-image">
-                            <div class="placeholder-img">
-                                <img src="https://cdn.shopify.com/s/files/1/0704/2026/7313/files/8258513305905_85quality_Nirvana_Nevermind_Vinyl_LP.webp?v=1734325766"
-                                    loading="lazy" alt="Nevermind">
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Nevermind</h3>
-                            <p class="product-category">Nirvana</p>
-                            <span class="product-price original-price" data-base-price="39.99">$39.99</span>
-                            <span class="product-price sale-price" data-base-price="29.99">$29.99</span>
-                        </div>
-                    </article>
-
-                    <article class="product-card">
-                        <div class="product-image">
-                            <div class="placeholder-img">
-                                <img src="https://cdn.shopify.com/s/files/1/0704/2026/7313/files/8448090997041_85quality_Mac_Miller_-_Swimming_2LP.webp?v=1734325758"
-                                    loading="lazy" alt="Swimming">
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Swimming</h3>
-                            <p class="product-category">Mac Miller</p>
-                            <span class="product-price original-price" data-base-price="37.99">$37.99</span>
-                            <span class="product-price sale-price" data-base-price="27.99">$27.99</span>
-                        </div>
-                    </article>
-
-                    <article class="product-card">
-                        <div class="product-image">
-                            <div class="placeholder-img">
-                                <img src="https://cdn.shopify.com/s/files/1/0704/2026/7313/files/8258505507121_85quality_paramore_riot_silver_vinyl.webp?v=1734325769"
-                                    loading="lazy" alt="Riot!">
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Riot!</h3>
-                            <p class="product-category">Paramore</p>
-                            <span class="product-price original-price" data-base-price="31.99">$31.99</span>
-                            <span class="product-price sale-price" data-base-price="21.99">$21.99</span>
-                        </div>
-                    </article>
+        </section>
+        <!-- Shop Section -->
+        <section id="shop" class="section shop-section">
+            <div class="container">
+                <div class="section-header reveal">
+                    <h2 class="section-title" data-i18n="section_sale">優惠商品</h2>
+                    <p class="section-desc">Up to 30% OFF!</p>
                 </div>
-                <button class="scroll-arrow next">&#10095;</button>
-            </div>
 
-            <div class="view-more-container reveal" style="text-align: center; margin-top: 60px;">
-                <a href="html/products.html" class="btn btn-secondary" data-i18n="btn_browse_more">瀏覽更多商品</a>
-            </div>
-        </div>
-    </section>
+                <div class="carousel-container reveal">
+                    <button class="scroll-arrow prev">&#10094;</button>
+                    <div class="product-track">
+                        <!-- Set 1 -->
+                        <article class="product-card">
+                            <div class="product-image">
+                                <!-- SZA - CTRL -->
+                                <div class="placeholder-img">
+                                    <img src="https://cdn.shopify.com/s/files/1/0704/2026/7313/files/8258503573809_85quality_SZA_vinyl_ctrl_2LP.webp?v=1734325779&width=800&quality=75"
+                                        loading="lazy" alt="SZA - CTRL">
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <h3 class="product-title">CTRL</h3>
+                                <p class="product-category">SZA</p>
+                                <span class="product-price original-price" data-base-price="34.99">$34.99</span>
+                                <span class="product-price sale-price" data-base-price="24.99">$24.99</span>
+                            </div>
+                        </article>
 
-    <!-- Footer -->
-    <footer class="site-footer">
-        <div class="container footer-content">
-            <div class="footer-col">
-                <h3>Analog Soul.</h3>
-                <p style="color: #666; width: 80%;">Est. 2025. Preserving the analog spirit in a digital world.</p>
+                        <article class="product-card">
+                            <div class="product-image">
+                                <!-- Kendrick Lamar -->
+                                <div class="placeholder-img">
+                                    <img src="https://cdn.shopify.com/s/files/1/0704/2026/7313/files/8258502394161_85quality_Kendrick_Lamar_-_good_kid_m_A_A_d_city_2LP.webp?v=1734325785&width=800&quality=75"
+                                        loading="lazy" alt="good kid, m.A.A.d city">
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <h3 class="product-title">good kid, m.A.A.d city</h3>
+                                <p class="product-category">Kendrick Lamar</p>
+                                <span class="product-price original-price" data-base-price="39.99">$39.99</span>
+                                <span class="product-price sale-price" data-base-price="29.99">$29.99</span>
+                            </div>
+                        </article>
+
+                        <article class="product-card">
+                            <div class="product-image">
+                                <!-- Tyler, The Creator -->
+                                <div class="placeholder-img">
+                                    <img src="https://cdn.shopify.com/s/files/1/0704/2026/7313/files/8258501869873_85quality_Tyler_the_creator_vinyl_igor_LP.webp?v=1734325769&width=800&quality=75"
+                                        loading="lazy" alt="IGOR">
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <h3 class="product-title">IGOR</h3>
+                                <p class="product-category">Tyler, The Creator</p>
+                                <span class="product-price original-price" data-base-price="37.99">$37.99</span>
+                                <span class="product-price sale-price" data-base-price="27.99">$27.99</span>
+                            </div>
+                        </article>
+
+                        <article class="product-card">
+                            <div class="product-image">
+                                <!-- Nirvana -->
+                                <div class="placeholder-img">
+                                    <img src="https://cdn.shopify.com/s/files/1/0704/2026/7313/files/8258513305905_85quality_Nirvana_Nevermind_Vinyl_LP.webp?v=1734325766&width=800&quality=75"
+                                        loading="lazy" alt="Nevermind">
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <h3 class="product-title">Nevermind</h3>
+                                <p class="product-category">Nirvana</p>
+                                <span class="product-price original-price" data-base-price="39.99">$39.99</span>
+                                <span class="product-price sale-price" data-base-price="29.99">$29.99</span>
+                            </div>
+                        </article>
+
+                        <article class="product-card">
+                            <div class="product-image">
+                                <!-- Mac Miller -->
+                                <div class="placeholder-img">
+                                    <img src="https://cdn.shopify.com/s/files/1/0704/2026/7313/files/8448090997041_85quality_Mac_Miller_-_Swimming_2LP.webp?v=1734325758&width=800&quality=75"
+                                        loading="lazy" alt="Swimming">
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <h3 class="product-title">Swimming</h3>
+                                <p class="product-category">Mac Miller</p>
+                                <span class="product-price original-price" data-base-price="37.99">$37.99</span>
+                                <span class="product-price sale-price" data-base-price="27.99">$27.99</span>
+                            </div>
+                        </article>
+
+                        <article class="product-card">
+                            <div class="product-image">
+                                <!-- Paramore -->
+                                <div class="placeholder-img">
+                                    <img src="https://cdn.shopify.com/s/files/1/0704/2026/7313/files/8258505507121_85quality_paramore_riot_silver_vinyl.webp?v=1734325769&width=800&quality=75"
+                                        loading="lazy" alt="Riot!">
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <h3 class="product-title">Riot!</h3>
+                                <p class="product-category">Paramore</p>
+                                <span class="product-price original-price" data-base-price="31.99">$31.99</span>
+                                <span class="product-price sale-price" data-base-price="21.99">$21.99</span>
+                            </div>
+                        </article>
+
+                        <!-- Set 2 (Duplicate) -->
+                        <article class="product-card">
+                            <div class="product-image">
+                                <div class="placeholder-img">
+                                    <img src="https://cdn.shopify.com/s/files/1/0704/2026/7313/files/8258503573809_85quality_SZA_vinyl_ctrl_2LP.webp?v=1734325779&width=800&quality=75"
+                                        loading="lazy" alt="SZA - CTRL">
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <h3 class="product-title">CTRL</h3>
+                                <p class="product-category">SZA</p>
+                                <span class="product-price original-price" data-base-price="34.99">$34.99</span>
+                                <span class="product-price sale-price" data-base-price="24.99">$24.99</span>
+                            </div>
+                        </article>
+
+                        <article class="product-card">
+                            <div class="product-image">
+                                <div class="placeholder-img">
+                                    <img src="https://cdn.shopify.com/s/files/1/0704/2026/7313/files/8258502394161_85quality_Kendrick_Lamar_-_good_kid_m_A_A_d_city_2LP.webp?v=1734325785&width=800&quality=75"
+                                        loading="lazy" alt="good kid, m.A.A.d city">
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <h3 class="product-title">good kid, m.A.A.d city</h3>
+                                <p class="product-category">Kendrick Lamar</p>
+                                <span class="product-price original-price" data-base-price="39.99">$39.99</span>
+                                <span class="product-price sale-price" data-base-price="29.99">$29.99</span>
+                            </div>
+                        </article>
+
+                        <article class="product-card">
+                            <div class="product-image">
+                                <div class="placeholder-img">
+                                    <img src="https://cdn.shopify.com/s/files/1/0704/2026/7313/files/8258501869873_85quality_Tyler_the_creator_vinyl_igor_LP.webp?v=1734325769&width=800&quality=75"
+                                        loading="lazy" alt="IGOR">
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <h3 class="product-title">IGOR</h3>
+                                <p class="product-category">Tyler, The Creator</p>
+                                <span class="product-price original-price" data-base-price="37.99">$37.99</span>
+                                <span class="product-price sale-price" data-base-price="27.99">$27.99</span>
+                            </div>
+                        </article>
+
+                        <article class="product-card">
+                            <div class="product-image">
+                                <div class="placeholder-img">
+                                    <img src="https://cdn.shopify.com/s/files/1/0704/2026/7313/files/8258513305905_85quality_Nirvana_Nevermind_Vinyl_LP.webp?v=1734325766&width=800&quality=75"
+                                        loading="lazy" alt="Nevermind">
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <h3 class="product-title">Nevermind</h3>
+                                <p class="product-category">Nirvana</p>
+                                <span class="product-price original-price" data-base-price="39.99">$39.99</span>
+                                <span class="product-price sale-price" data-base-price="29.99">$29.99</span>
+                            </div>
+                        </article>
+
+                        <article class="product-card">
+                            <div class="product-image">
+                                <div class="placeholder-img">
+                                    <img src="https://cdn.shopify.com/s/files/1/0704/2026/7313/files/8448090997041_85quality_Mac_Miller_-_Swimming_2LP.webp?v=1734325758&width=800&quality=75"
+                                        loading="lazy" alt="Swimming">
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <h3 class="product-title">Swimming</h3>
+                                <p class="product-category">Mac Miller</p>
+                                <span class="product-price original-price" data-base-price="37.99">$37.99</span>
+                                <span class="product-price sale-price" data-base-price="27.99">$27.99</span>
+                            </div>
+                        </article>
+
+                        <article class="product-card">
+                            <div class="product-image">
+                                <div class="placeholder-img">
+                                    <img src="https://cdn.shopify.com/s/files/1/0704/2026/7313/files/8258505507121_85quality_paramore_riot_silver_vinyl.webp?v=1734325769&width=800&quality=75"
+                                        loading="lazy" alt="Riot!">
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <h3 class="product-title">Riot!</h3>
+                                <p class="product-category">Paramore</p>
+                                <span class="product-price original-price" data-base-price="31.99">$31.99</span>
+                                <span class="product-price sale-price" data-base-price="21.99">$21.99</span>
+                            </div>
+                        </article>
+
+                        <!-- Set 3 (Duplicate) -->
+                        <article class="product-card">
+                            <div class="product-image">
+                                <div class="placeholder-img">
+                                    <img src="https://cdn.shopify.com/s/files/1/0704/2026/7313/files/8258503573809_85quality_SZA_vinyl_ctrl_2LP.webp?v=1734325779&width=800&quality=75"
+                                        loading="lazy" alt="SZA - CTRL">
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <h3 class="product-title">CTRL</h3>
+                                <p class="product-category">SZA</p>
+                                <span class="product-price original-price" data-base-price="34.99">$34.99</span>
+                                <span class="product-price sale-price" data-base-price="24.99">$24.99</span>
+                            </div>
+                        </article>
+
+                        <article class="product-card">
+                            <div class="product-image">
+                                <div class="placeholder-img">
+                                    <img src="https://cdn.shopify.com/s/files/1/0704/2026/7313/files/8258502394161_85quality_Kendrick_Lamar_-_good_kid_m_A_A_d_city_2LP.webp?v=1734325785&width=800&quality=75"
+                                        loading="lazy" alt="good kid, m.A.A.d city">
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <h3 class="product-title">good kid, m.A.A.d city</h3>
+                                <p class="product-category">Kendrick Lamar</p>
+                                <span class="product-price original-price" data-base-price="39.99">$39.99</span>
+                                <span class="product-price sale-price" data-base-price="29.99">$29.99</span>
+                            </div>
+                        </article>
+
+                        <article class="product-card">
+                            <div class="product-image">
+                                <div class="placeholder-img">
+                                    <img src="https://cdn.shopify.com/s/files/1/0704/2026/7313/files/8258501869873_85quality_Tyler_the_creator_vinyl_igor_LP.webp?v=1734325769&width=800&quality=75"
+                                        loading="lazy" alt="IGOR">
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <h3 class="product-title">IGOR</h3>
+                                <p class="product-category">Tyler, The Creator</p>
+                                <span class="product-price original-price" data-base-price="37.99">$37.99</span>
+                                <span class="product-price sale-price" data-base-price="27.99">$27.99</span>
+                            </div>
+                        </article>
+
+                        <article class="product-card">
+                            <div class="product-image">
+                                <div class="placeholder-img">
+                                    <img src="https://cdn.shopify.com/s/files/1/0704/2026/7313/files/8258513305905_85quality_Nirvana_Nevermind_Vinyl_LP.webp?v=1734325766&width=800&quality=75"
+                                        loading="lazy" alt="Nevermind">
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <h3 class="product-title">Nevermind</h3>
+                                <p class="product-category">Nirvana</p>
+                                <span class="product-price original-price" data-base-price="39.99">$39.99</span>
+                                <span class="product-price sale-price" data-base-price="29.99">$29.99</span>
+                            </div>
+                        </article>
+
+                        <article class="product-card">
+                            <div class="product-image">
+                                <div class="placeholder-img">
+                                    <img src="https://cdn.shopify.com/s/files/1/0704/2026/7313/files/8448090997041_85quality_Mac_Miller_-_Swimming_2LP.webp?v=1734325758&width=800&quality=75"
+                                        loading="lazy" alt="Swimming">
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <h3 class="product-title">Swimming</h3>
+                                <p class="product-category">Mac Miller</p>
+                                <span class="product-price original-price" data-base-price="37.99">$37.99</span>
+                                <span class="product-price sale-price" data-base-price="27.99">$27.99</span>
+                            </div>
+                        </article>
+
+                        <article class="product-card">
+                            <div class="product-image">
+                                <div class="placeholder-img">
+                                    <img src="https://cdn.shopify.com/s/files/1/0704/2026/7313/files/8258505507121_85quality_paramore_riot_silver_vinyl.webp?v=1734325769&width=800&quality=75"
+                                        loading="lazy" alt="Riot!">
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <h3 class="product-title">Riot!</h3>
+                                <p class="product-category">Paramore</p>
+                                <span class="product-price original-price" data-base-price="31.99">$31.99</span>
+                                <span class="product-price sale-price" data-base-price="21.99">$21.99</span>
+                            </div>
+                        </article>
+                    </div>
+                    <button class="scroll-arrow next">&#10095;</button>
+                </div>
+
+                <div class="view-more-container reveal" style="text-align: center; margin-top: 60px;">
+                    <a href="html/products.html" class="btn btn-secondary" data-i18n="btn_browse_more">瀏覽更多商品</a>
+                </div>
             </div>
-            <div class="footer-col">
-                <h4 data-i18n="footer_explore">Explore</h4>
-                <ul>
-                    <li><a href="html/faq.html">FAQ</a></li>
-                    <li><a href="html/terms.html">Terms</a></li>
-                </ul>
+        </section>
+
+        <!-- Footer -->
+        <footer class="site-footer">
+            <div class="container footer-content">
+                <div class="footer-col">
+                    <h3>Analog Soul.</h3>
+                    <p style="color: #666; width: 80%;">Est. 2025. Preserving the analog spirit in a digital world.</p>
+                </div>
+                <div class="footer-col">
+                    <h4 data-i18n="footer_explore">Explore</h4>
+                    <ul>
+                        <li><a href="html/faq.html">FAQ</a></li>
+                        <li><a href="html/terms.html">Terms</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 data-i18n="footer_connect">Connect</h4>
+                    <ul>
+                        <li><a href="https://www.ncut.edu.tw/" target="_blank">Instagram</a></li>
+                        <li><a href="https://www.ncut.edu.tw/" target="_blank">Twitter</a></li>
+                        <li><a href="https://www.ncut.edu.tw/" target="_blank">Facebook</a></li>
+                    </ul>
+                </div>
             </div>
-            <div class="footer-col">
-                <h4 data-i18n="footer_connect">Connect</h4>
-                <ul>
-                    <li><a href="https://www.ncut.edu.tw/" target="_blank">Instagram</a></li>
-                    <li><a href="https://www.ncut.edu.tw/" target="_blank">Twitter</a></li>
-                    <li><a href="https://www.ncut.edu.tw/" target="_blank">Facebook</a></li>
-                </ul>
+            <div class="copyright">
+                <p>&copy; 2025 Analog Soul. All rights reserved.</p>
             </div>
-        </div>
-        <div class="copyright">
-            <p>&copy; 2025 Analog Soul. All rights reserved.</p>
-        </div>
-    </footer>
+        </footer>
+    </div>
 
     <!-- Product Detail Modal -->
     <div id="product-modal" class="modal">
