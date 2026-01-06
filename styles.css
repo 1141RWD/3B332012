@@ -259,7 +259,8 @@ img {
   font-size: 2rem;
   letter-spacing: -0.5px;
   /* Layer 1 (Top): Yellow (Grow/Shrink), Layer 2 (Bottom): White (Static) */
-  background-image: linear-gradient(to right, var(--accent), var(--accent)), linear-gradient(to right, #fff, #fff);
+  background-image: linear-gradient(to right, var(--accent), var(--accent)),
+    linear-gradient(to right, #fff, #fff);
   background-size: 0% 100%, 100% 100%;
   background-position: 100% 0, 0 0;
   /* Default: Yellow anchored Right (for exit shrink) */
@@ -340,7 +341,6 @@ img {
   transform: translateY(-9px) rotate(-45deg);
 }
 
-
 /* Responsive Styles */
 @media (max-width: 768px) {
   .container {
@@ -353,8 +353,35 @@ img {
   }
 
   .header-actions .cart-icon::before {
-    content: '\f07a';
+    content: "\f07a";
     /* FontAwesome Cart Icon ID */
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    font-size: 1.2rem;
+    color: var(--text-primary);
+  }
+
+  .header-actions .order-icon {
+    font-size: 0;
+    /* Hide text */
+  }
+
+  .header-actions .order-icon::before {
+    content: '\f46d';
+    /* FontAwesome Clipboard List Icon ID */
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    font-size: 1.2rem;
+    color: var(--text-primary);
+  }
+
+  .header-actions .auth-icon {
+    font-size: 0;
+  }
+
+  .header-actions .auth-icon::before {
+    content: '\f007';
+    /* FontAwesome User Icon ID */
     font-family: "Font Awesome 6 Free";
     font-weight: 900;
     font-size: 1.2rem;
@@ -418,6 +445,30 @@ img {
   color: var(--accent);
 }
 
+.order-icon {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
+}
+
+.order-icon:hover {
+  color: var(--accent);
+}
+
+.auth-icon {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
+}
+
+.auth-icon:hover {
+  color: var(--accent);
+}
+
 /* Hero Section */
 .hero {
   height: 100vh;
@@ -425,7 +476,8 @@ img {
   align-items: center;
   justify-content: center;
   position: relative;
-  background: url("https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=2564&auto=format&fit=crop") no-repeat center center/cover;
+  background: url("https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=2564&auto=format&fit=crop")
+    no-repeat center center/cover;
   background-attachment: fixed;
   /* Parallax effect */
 }
@@ -435,9 +487,11 @@ img {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg,
+  background: linear-gradient(
+      180deg,
       rgba(18, 18, 18, 0.4) 0%,
-      rgba(18, 18, 18, 0.8) 100%),
+      rgba(18, 18, 18, 0.8) 100%
+    ),
     radial-gradient(circle at center, transparent 0%, #121212 120%);
   pointer-events: none;
 }
@@ -679,7 +733,6 @@ img {
   display: none;
 }
 
-
 /* Product Container - Expanded View */
 .category-products-container {
   max-width: 1400px;
@@ -766,7 +819,7 @@ img {
 }
 
 .product-title {
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
   /* Added for premium look */
   font-size: 1.4rem;
   margin-bottom: 8px;
@@ -1186,7 +1239,7 @@ img {
   width: 100%;
   /* Ensure full width clickable */
   padding: 6px 25px;
-  font-family: 'Quicksand', sans-serif;
+  font-family: "Quicksand", sans-serif;
   font-weight: 500;
   font-size: 1rem;
   color: #ccc;
@@ -1325,7 +1378,6 @@ img {
   transition: color 0.3s;
 }
 
-
 /* Newsletter Section */
 .newsletter-section {
   padding: 100px 0;
@@ -1398,7 +1450,6 @@ img {
   gap: 40px;
   padding: 40px 0;
 }
-
 
 /* Currency Selector */
 .header-actions {
@@ -1475,7 +1526,7 @@ img {
 }
 
 .section-heading {
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
   font-size: 1.8rem;
   color: var(--accent);
   margin-bottom: 25px;
@@ -1497,7 +1548,7 @@ img {
   border-radius: 6px;
   /* Slightly tighter radius */
   color: #e0e0e0;
-  font-family: 'Quicksand', sans-serif;
+  font-family: "Quicksand", sans-serif;
   font-size: 0.95rem;
   /* Reduced font size */
   font-weight: 500;
@@ -1556,7 +1607,7 @@ img {
   margin-bottom: 12px;
   color: #aaa;
   font-size: 1.05rem;
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
 }
 
 .summary-row span:last-child {
@@ -1570,7 +1621,7 @@ img {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   color: #fff;
   font-size: 1.8rem;
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
 }
 
 .summary-row.total span:last-child {
